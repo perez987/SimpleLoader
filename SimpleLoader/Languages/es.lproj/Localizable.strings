@@ -10,7 +10,7 @@
   SimpleLoader
 */
 
-"app_title" = "Instalador de extensiones SimpleLoader";
+"app_title" = "Instalador de Extensiones SimpleLoader";
 "app_subtitle" = "Combina KDK automáticamente e instala Kext/Bundle en /System/Library/Extensions";
 "installation_options" = "Opciones de instalación";
 "show_advanced" = "Mostrar opciones avanzadas";
@@ -35,7 +35,7 @@
 "operation_log" = "Registro de operaciones";
 "waiting" = "Esperando operación...";
 "open_kdk" = "Abrir directorio KDK";
-"merge_kdk" = "Solo combinar KDK";
+"merge_kdk" = "Sólo combinar KDK";
 "start_install" = "Iniciar instalación";
 "cancel" = "Cancelar";
 "about" = "Acerca de";
@@ -75,9 +75,9 @@
 "starting_merging_to_root_vol" = "Iniciando combinación de KDK al volumen raíz";
 "slow_step" = "¡Este paso es lento, no forzar la detención!";
 "merged_completed_umounted" = "Combinación completada, volumen raíz desmontado";
-"merged_successfully" = "Combinación exitosa";
+"merged_successfully" = "Combinado con éxito";
 "merged_failed" = "Combinación fallida";
-"kdk_merged_successfully" = "KDK combinado exitosamente";
+"kdk_merged_successfully" = "KDK combinado con éxito";
 "whether_select_kdk" = "¿Seleccionar KDK?";
 "info_not_selected_kdk" = "Información: No se seleccionó ningún KDK";
 "options" = "Opciones";
@@ -96,24 +96,24 @@
 "warning_kdk_dir_doesnt_exist" = "Existe directorio KDK";
 "error_cant_gr_as" = "No se puede crear objeto AppleScript";
 "starting_rebuild" = "Iniciando reconstrucción de caché del kernel...";
-"rebuild_successfully" = "Caché del kernel reconstruida exitosamente";
+"rebuild_successfully" = "Caché del kernel reconstruida con éxito";
 "rebuild_failed" = "Fallo al reconstruir caché del kernel";
 "starting_snapshot" = "Iniciando creación de instantánea del sistema...";
-"snapshot_successfully" = "Instantánea del sistema creada exitosamente";
+"snapshot_successfully" = "Instantánea del sistema creada con éxito";
 "snapshot_failed" = "Fallo al crear instantánea del sistema";
 "last_sealed_snapshot" = "Iniciando restauración de última instantánea...";
-"revert_successfully" = "Instantánea restaurada exitosamente";
+"revert_successfully" = "Instantánea restaurada con éxito";
 "revert_failed" = "Fallo al restaurar instantánea";
 "selected_kdk" = "KDK seleccionado";
 "cancel" = "Cancelar";
-"only_merge_kdk" = "Solo combinar KDK";
+"only_merge_kdk" = "Sólo combinar KDK";
 "creat_snapshot" = "Crear instantánea";
 "restore_snapshot" = "Restaurar instantánea";
 "select_kdk" = "Seleccionar KDK";
 "select_installed_kdk" = "Seleccionar KDK instalado";
 "not_selected" = "No seleccionado";
 "refresh" = "Actualizar";
-"effective_kdk" = "KDK válido seleccionado";
+"effective_kdk" = "KDK seleccionado válido";
 "choose_bundle" = "Seleccionar archivo Kext/Framework";
 "drag_here" = "Arrastra y suelta archivos Kext/Framework aquí";
 "or" = "O";

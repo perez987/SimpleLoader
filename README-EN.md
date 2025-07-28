@@ -1,5 +1,7 @@
 # SimpleLoader - macOS 系统扩展安装工
 
+![](SimpleLoader-EN.png)
+
 A graphical tool designed for macOS to safely merge KDK (Kernel Development Kit) and install kernel extensions (Kext) to the system directory.
 
 ## Features
