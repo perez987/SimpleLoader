@@ -1,4 +1,4 @@
-# SimpleLoader - macOS 系统扩展安装工
+# SimpleLoader - macOS System Extension Installer
 
 ![](SimpleLoader-EN.png)
 
