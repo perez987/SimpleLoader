@@ -93,7 +93,7 @@
 "open_kdk_dir" = "Abrir directorio KDK";
 "opened_kdk_dir" = "Directorio KDK abierto";
 "kdk_dir_exists" = "Existe directorio KDK";
-"warning_kdk_dir_doesnt_exist" = "Existe directorio KDK";
+"warning_kdk_dir_doesnt_exist" = "No existe directorio KDK";
 "error_cant_gr_as" = "No se puede crear objeto AppleScript";
 "starting_rebuild" = "Iniciando reconstrucción de caché del kernel...";
 "rebuild_successfully" = "Caché del kernel reconstruida con éxito";
