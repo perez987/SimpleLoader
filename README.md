@@ -6,8 +6,9 @@
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/laobamac/SimpleLoader)
 <img width="5115" height="2812" alt="FDC16D4518C49BD1EEAD4B3423A1964D" src="https://github.com/user-attachments/assets/22899249-51a8-4fe4-9e12-a9a2f7aee826" />
 
-
 一款专为 macOS 设计的图形化工具，用于安全地合并 KDK（Kernel Development Kit）和安装内核扩展（Kext）到系统目录。
+
+一 [English version](README-EN.md)。
 
 ## 功能特性
 
