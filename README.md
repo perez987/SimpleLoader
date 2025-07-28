@@ -3,6 +3,7 @@
 ![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
 ![Platform](https://img.shields.io/badge/macOS-11+-blue.svg)
 ![License](https://img.shields.io/badge/License-GPLv3-green.svg)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/laobamac/SimpleLoader)
 <img width="5115" height="2812" alt="FDC16D4518C49BD1EEAD4B3423A1964D" src="https://github.com/user-attachments/assets/22899249-51a8-4fe4-9e12-a9a2f7aee826" />
 
 
