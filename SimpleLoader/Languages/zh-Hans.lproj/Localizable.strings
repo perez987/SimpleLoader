@@ -92,8 +92,8 @@
 "op_canceled" = "操作已取消";
 "open_kdk_dir" = "打开KDK目录";
 "opened_kdk_dir" = "已打开KDK目录";
-"kdk_dir_exists" = "KDK目录存在";
-"warning_kdk_dir_doesnt_exist" = "KDK目录存在";
+"kdk_dir_exists" = "KDK 目录存在";
+"warning_kdk_dir_doesnt_exist" = "KDK 目录不存在";
 "error_cant_gr_as" = "无法创建 AppleScript 对象";
 "starting_rebuild" = "开始重建内核缓存...";
 "rebuild_successfully" = "内核缓存重建成功";

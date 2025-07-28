@@ -93,7 +93,7 @@
 "open_kdk_dir" = "開啟 KDK 目錄";
 "opened_kdk_dir" = "已開啟 KDK 目錄";
 "kdk_dir_exists" = "KDK 目錄存在";
-"warning_kdk_dir_doesnt_exist" = "KDK 目錄存在";
+"warning_kdk_dir_doesnt_exist" = "KDK 目錄不存在";
 "error_cant_gr_as" = "無法建立 AppleScript 物件";
 "starting_rebuild" = "開始重建核心快取...";
 "rebuild_successfully" = "核心快取重建成功";

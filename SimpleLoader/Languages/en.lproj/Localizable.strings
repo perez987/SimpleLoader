@@ -93,7 +93,7 @@
 "open_kdk_dir" = "Open KDK Directory";
 "opened_kdk_dir" = "KDK directory opened";
 "kdk_dir_exists" = "KDK directory exists";
-"warning_kdk_dir_doesnt_exist" = "KDK directory exists";
+"warning_kdk_dir_doesnt_exist" = "KDK directory doesn't exists";
 "error_cant_gr_as" = "Cannot create AppleScript object";
 "starting_rebuild" = "Starting kernel cache rebuild...";
 "rebuild_successfully" = "Kernel cache rebuilt successfully";
