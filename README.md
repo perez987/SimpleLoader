@@ -4,6 +4,7 @@
 ![Platform](https://img.shields.io/badge/macOS-11+-blue.svg)
 ![License](https://img.shields.io/badge/License-GPLv3-green.svg)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/laobamac/SimpleLoader)
+![GitHub all releases](https://img.shields.io/github/downloads/laobamac/SimpleLoader/total?color=white&style=plastic)
 <img width="5115" alt="FDC16D4518C49BD1EEAD4B3423A1964D" src="https://github.com/user-attachments/assets/22899249-51a8-4fe4-9e12-a9a2f7aee826" />
 
 一款专为 macOS 设计的图形化工具，用于安全地合并 KDK（Kernel Development Kit）和安装内核扩展（Kext）到系统目录。
