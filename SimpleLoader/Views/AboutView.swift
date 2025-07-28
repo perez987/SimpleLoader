@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct AboutView: View {
+    @EnvironmentObject var languageManager: LanguageManager
     @Environment(\.presentationMode) var presentationMode
+    @State private var showLanguageSelection = false
+    
+    let contributors = [
+        "contributor1".localized,
+        "contributor2".localized,
+    ]
     
     var body: some View {
         VStack(spacing: 16) {
@@ -20,7 +27,7 @@ struct AboutView: View {
                     Text("SimpleLoader")
                         .font(.title)
                         .bold()
-                    Text("系统扩展安装工具")
+                    Text("System Extension Tool".localized)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
@@ -30,31 +37,61 @@ struct AboutView: View {
             Divider()
             
             VStack(alignment: .leading, spacing: 8) {
-                InfoRow(icon: "number", title: "版本", value: "1.0.0")
-                InfoRow(icon: "person", title: "作者", value: "laobamac")
-                InfoRow(icon: "c", title: "版权", value: "© 2025 保留所有权利")
+                InfoRow(icon: "number", title: "version".localized, value: "1.0.0")
+                InfoRow(icon: "person", title: "author".localized, value: "laobamac")
+                InfoRow(icon: "c", title: "copyright".localized, value: "© 2025 " + "rights_reserved".localized)
+                InfoRow(icon: "globe", title: "language".localized,
+                        value: languageManager.currentLanguage == "auto" ?
+                        "auto_detect".localized :
+                        languageManager.displayName(for: languageManager.currentLanguage))
+                
+                Button(action: {
+                    showLanguageSelection = true
+                }) {
+                    Text("change_language".localized)
+                        .font(.subheadline)
+                        .foregroundColor(.accentColor)
+                }
+                .buttonStyle(PlainButtonStyle())
+                .sheet(isPresented: $showLanguageSelection) {
+                    LanguageSelectionView()
+                        .environmentObject(languageManager)
+                }
             }
+            
+            Divider()
+            
+            VStack(alignment: .leading, spacing: 8) {
+                Text("contributors".localized)
+                    .font(.headline)
+                ForEach(contributors, id: \.self) { contributor in
+                    Text(contributor)
+                        .font(.subheadline)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal)
             
             Divider()
             
             Link(destination: URL(string: "https://github.com/laobamac/SimpleLoader")!) {
                 HStack {
                     Image(systemName: "arrow.up.right.square")
-                    Text("访问GitHub仓库")
+                    Text("visit_github".localized)
                 }
                 .foregroundColor(.accentColor)
             }
             
-            Spacer()
+            Divider()
             
-            Button("关闭") {
+            Button("close".localized) {
                 presentationMode.wrappedValue.dismiss()
             }
             .buttonStyle(BorderedButtonStyle())
             .frame(width: 120)
         }
         .padding()
-        .frame(width: 320, height: 280)
+        .frame(width: 320, height: 410)
     }
 }
 

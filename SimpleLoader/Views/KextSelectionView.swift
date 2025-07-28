@@ -14,7 +14,7 @@ struct KextSelectionView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("选择 Kext 文件")
+            Text("choose_bundle".localized)
                 .font(.headline)
             
             ZStack {
@@ -36,14 +36,14 @@ struct KextSelectionView: View {
                         Image(systemName: "plus.square.dashed")
                             .font(.system(size: 32))
                             .foregroundColor(.secondary)
-                        Text("拖放 Kext 文件到这里")
+                        Text("drag_here".localized)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
-                        Text("或")
+                        Text("or".localized)
                             .font(.caption)
                             .foregroundColor(.secondary)
                         Button(action: selectFiles) {
-                            Text("点击选择文件...")
+                            Text("click_to_choose".localized)
                         }
                         .buttonStyle(BorderedButtonStyle())
                     }
@@ -53,7 +53,7 @@ struct KextSelectionView: View {
                         VStack(alignment: .leading, spacing: 4) {
                             ForEach(kextPaths, id: \.self) { path in
                                 HStack {
-                                    Image(systemName: "doc")
+                                    Image(systemName: path.hasSuffix(".framework") ? "folder" : "doc")
                                     Text(URL(fileURLWithPath: path).lastPathComponent)
                                         .font(.caption)
                                     Spacer()
@@ -92,7 +92,7 @@ struct KextSelectionView: View {
                 if let urlData = urlData as? Data {
                     let url = NSURL(absoluteURLWithDataRepresentation: urlData, relativeTo: nil) as URL
                     DispatchQueue.main.async {
-                        addKext(at: url.path)
+                        addFile(at: url.path)
                     }
                 }
             }
@@ -103,16 +103,16 @@ struct KextSelectionView: View {
         let panel = NSOpenPanel()
         panel.allowsMultipleSelection = true
         panel.canChooseDirectories = false
-        panel.allowedContentTypes = [.bundle]
+        panel.allowedContentTypes = [.bundle, .framework]
         
         if panel.runModal() == .OK {
             for url in panel.urls {
-                addKext(at: url.path)
+                addFile(at: url.path)
             }
         }
     }
     
-    private func addKext(at path: String) {
+    private func addFile(at path: String) {
         guard !kextPaths.contains(path) else { return }
         withAnimation {
             kextPaths.append(path)

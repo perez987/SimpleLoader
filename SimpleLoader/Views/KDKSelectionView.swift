@@ -13,12 +13,12 @@ struct KDKSelectionView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("选择 KDK")
+            Text("select_kdk".localized)
                 .font(.headline)
             
             HStack {
-                Picker("选择已安装的KDK", selection: $kdkMerger.selectedKDK) {
-                    Text("未选择").tag(nil as String?)
+                Picker("select_installed_kdk".localized, selection: $kdkMerger.selectedKDK) {
+                    Text("not_selected".localized).tag(nil as String?)
                     ForEach(kdkMerger.kdkItems, id: \.self) { kdk in
                         Text(URL(fileURLWithPath: kdk).lastPathComponent).tag(kdk as String?)
                     }
@@ -29,14 +29,14 @@ struct KDKSelectionView: View {
                     if let newValue = newValue {
                         kdkMerger.kdkPath = newValue
                         kdkMerger.isKDKSelected = true
-                        kdkMerger.logPublisher.send("已选择KDK: \(newValue)")
+                        kdkMerger.logPublisher.send("selected_kdk".localized + ": \(newValue)")
                     } else {
                         kdkMerger.kdkPath = ""
                         kdkMerger.isKDKSelected = false
                     }
                 }
                 
-                Button("刷新") {
+                Button("refresh".localized) {
                     kdkMerger.refreshKDKList()
                 }
                 .buttonStyle(BorderedButtonStyle())
@@ -46,7 +46,7 @@ struct KDKSelectionView: View {
                 HStack {
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundColor(.green)
-                    Text("有效的 KDK 已选择")
+                    Text("effective_kdk".localized)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }

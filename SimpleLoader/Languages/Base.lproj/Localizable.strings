@@ -1,0 +1,104 @@
+//
+//  Localizable_zh_cn.strings
+//  SimpleLoader
+//
+//  Created by laobamac on 2025/7/28.
+//
+
+/*
+  Localizable.strings (Chinese)
+  SimpleLoader
+*/
+
+"app_title" = "SimpleLoader 系统扩展安装工具";
+"app_subtitle" = "自动合并 KDK 并安装 Kext/Bundle 到 /System/Library/Extensions";
+"installation_options" = "安装选项";
+"show_advanced" = "显示高级选项";
+"hide_advanced" = "隐藏高级选项";
+"force_overwrite" = "强行覆盖重名文件";
+"backup_existing" = "备份现有 Kext/Framework";
+"advanced_options" = "高级选项";
+"install_to_le" = "安装到/Library/Extensions";
+"install_to_private" = "允许安装Framework到/System/Library/PrivateFrameworks";
+"private_warning" = "警告：安装到PrivateFrameworks可能导致系统崩溃";
+"full_kdk_merge" = "合并完整的KDK(包括Kernel)";
+"kdk_warning" = "不建议：合并完整KDK会占用额外空间并带来安全隐患";
+"status" = "状态";
+"ready" = "准备就绪";
+"installing_kext" = "正在将 Kext 安装到 /System/Library/Extensions";
+"merging_kdk" = "正在合并 KDK 文件";
+"starting_merge_and_install" = "开始合并KDK并安装Kext...";
+"starting_install_kext" = "开始安装Kext文件...";
+"select_kext" = "选择 Kext/Framework 文件";
+"drop_files" = "拖放 Kext/Framework 文件到这里";
+"select_files" = "点击选择文件...";
+"operation_log" = "操作日志";
+"waiting" = "等待操作...";
+"open_kdk" = "打开KDK目录";
+"merge_kdk" = "仅合并KDK";
+"start_install" = "开始安装";
+"cancel" = "取消";
+"about" = "关于软件";
+"rebuild_cache" = "重建缓存";
+"create_snapshot" = "创建快照";
+"restore_snapshot" = "恢复快照";
+"version" = "版本";
+"author" = "作者";
+"copyright" = "版权";
+"contributors" = "贡献者";
+"visit_github" = "访问GitHub仓库";
+"close" = "关闭";
+"rights_reserved" = "保留所有权利";
+"contributor1" = "laobamac - 开发者";
+"contributor2" = "perez987 - 提供英语翻译";
+"auto_detect" = "自动检测";
+"language_settings" = "语言设置";
+"language" = "语言";
+"change_language" = "更改语言";
+"opLogs" = "操作日志";
+"installing" = "正在安装...";
+"merging" = "正在合并KDK...";
+"warning_no_kdk" = "警告: 未找到KDK，请先安装KDK";
+"warning" = "警告";
+"error" = "错误";
+"none_out" = "无输出";
+"unkn_error" = "未知错误";
+"error_cant_read_kdk_dir" = "错误: 无法读取KDK目录";
+"error_not_selected_kdk" = "错误: 未选择KDK";
+"error_merged_kdk_failed" = "错误: 合并KDK失败";
+"error_not_selected_bundle" = "错误: 未选择任何Kext文件";
+"error_installed_failed" = "错误: 安装失败";
+"not_selected_kdk" = "未选择KDK";
+"starting_merging" = "开始合并KDK";
+"locating_root_vol" = "定位根目录...";
+"starting_merging_to_root_vol" = "开始合并KDK到根目录";
+"slow_step" = "此步骤很慢，不要强制停止！";
+"merged_completed_umounted" = "合并完成，已卸载根目录";
+"merged_successfully" = "合并成功";
+"merged_failed" = "合并失败";
+"kdk_merged_successfully" = "KDK已成功合并";
+"whether_select_kdk" = "是否选择KDK";
+"info_not_selected_kdk" = "信息: 未选择任何KDK";
+"options" = "选项";
+"force" = "强制覆盖";
+"backup" = "备份";
+"rebuild" = "重建缓存";
+"install_completed" = "安装完成";
+"op_successfully" = "操作成功";
+"op_failed" = "操作失败";
+"kext_has_been_installed" = "指定的内核扩展已安装";
+"op_canceled" = "操作已取消";
+"opened_kdk_dir" = "已打开KDK目录";
+"kdk_dir_exists" = "KDK目录存在";
+"warning_kdk_dir_doesnt_exist" = "KDK目录存在";
+"error_cant_gr_as" = "无法创建 AppleScript 对象";
+"starting_rebuild" = "开始重建内核缓存...";
+"rebuild_successfully" = "内核缓存重建成功";
+"rebuild_failed" = "内核缓存重建失败";
+"starting_snapshot" = "开始创建系统快照...";
+"snapshot_successfully" = "系统快照创建成功";
+"snapshot_failed" = "系统快照创建失败";
+"last_sealed_snapshot" = "开始恢复最后一个快照...";
+"revert_successfully" = "快照恢复成功";
+"revert_failed" = "快照恢复失败";
+"selected_kdk" = "已选择KDK";

@@ -16,7 +16,7 @@ class KDKMerger: ObservableObject {
     @Published var isInstalling = false
     @Published var isMerging = false
     @Published var installationProgress: Double = 0
-    @Published var logMessages: [String] = ["等待操作..."]
+    @Published var logMessages: [String] = ["waiting".localized]
     @Published var selectedKDK: String?
     @Published var kdkItems: [String] = []
     @Published var logPublisher = PassthroughSubject<String, Never>()
@@ -63,32 +63,36 @@ class KDKMerger: ObservableObject {
             DispatchQueue.main.async {
                 self.kdkItems = kdks
                 if kdks.isEmpty {
-                    self.logPublisher.send("警告: 未找到KDK，请先安装KDK")
-                    self.showAlert(title: "警告", message: "未找到KDK，请先安装KDK")
+                    self.logPublisher.send("warning_no_kdk".localized)
+                    self.showAlert(title: "warning".localized, message: "warning_no_kdk".localized)
                 } else {
-                    self.logPublisher.send("找到 \(kdks.count) 个KDK")
+                    self.logPublisher.send("found".localized + " \(kdks.count) 个KDK")
                 }
             }
         } catch {
-            logPublisher.send("错误: 无法读取KDK目录 - \(error.localizedDescription)")
+            logPublisher.send("error_cant_read_kdk_dir".localized + "- \(error.localizedDescription)")
             DispatchQueue.main.async {
                 self.kdkItems = []
             }
         }
     }
     
-    func mergeKDK() {
+    func mergeKDK(fullMerge: Bool) {
         guard let selectedKDK = selectedKDK else {
-            logPublisher.send("错误: 未选择KDK")
-            self.showAlert(title: "错误", message: "未选择KDK")
+            logPublisher.send("error_not_selected_kdk".localized)
+            self.showAlert(title: "error".localized, message: "not_selected_kdk".localized)
             return
         }
         
         isMerging = true
         installationProgress = 0
-        logPublisher.send("开始合并KDK: \(selectedKDK)")
+        logPublisher.send("starting_merging".localized + ": \(selectedKDK)")
         
         startProgressUpdates()
+        
+        let mergeCommand = fullMerge ?
+        "rsync -r -i -a '\(selectedKDK)/System/' \"$MOUNT_PATH/System\"" :
+        "rsync -r -i -a '\(selectedKDK)/System/Library/Extensions/' \"$MOUNT_PATH/System/Library/Extensions\""
         
         let shellScript = """
         umount "$MOUNT_PATH"; \
@@ -118,7 +122,7 @@ class KDKMerger: ObservableObject {
             MOUNT_PATH='/'; \
         fi && \
         echo "挂载路径: $MOUNT_PATH" && \
-        rsync -r -i -a '\(selectedKDK)/System/Library/Extensions/' "$MOUNT_PATH/System/Library/Extensions" && \
+        \(mergeCommand) && \
         kmutil create --volume-root "$MOUNT_PATH" --update-all --allow-missing-kdk && \
         bless --mount "$MOUNT_PATH" --bootefi --create-snapshot && \
         if [ -f "$MOUNT_PATH/System/Library/Extensions/System.kext/PlugIns/Libkern.kext/Libkern" ]; then \
@@ -137,9 +141,9 @@ class KDKMerger: ObservableObject {
         do shell script "\(shellScript.replacingOccurrences(of: "\"", with: "\\\""))" with administrator privileges
         """
         
-        logPublisher.send("定位根目录...")
-        logPublisher.send("开始合并KDK到根目录")
-        logPublisher.send("此步骤很慢，不要强制停止！")
+        logPublisher.send("locating_root_vol".localized)
+        logPublisher.send("starting_merging_to_root_vol".localized)
+        logPublisher.send("slow_step".localized)
         
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
@@ -150,49 +154,49 @@ class KDKMerger: ObservableObject {
                     
                     if success {
                         self.installationProgress = 1.0
-                        self.logPublisher.send("合并完成，已卸载根目录")
+                        self.logPublisher.send("merged_completed_umounted".localized)
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                             self.isMerging = false
                             self.installationProgress = 0
                         }
-                        self.showAlert(title: "合并成功", message: "KDK已成功合并")
+                        self.showAlert(title: "merged_successfully".localized, message: "kdk_merged_successfully".localized)
                     } else {
-                        self.logPublisher.send("错误: 合并KDK失败 - \(output ?? "无输出")")
+                        self.logPublisher.send("error_merged_kdk_failed".localized + " - \(output ?? "none_out".localized)")
                         self.isMerging = false
                         self.installationProgress = 0
-                        self.showAlert(title: "合并失败", message: output ?? "未知错误")
+                        self.showAlert(title: "merged_failed".localized, message: output ?? "unkn_error".localized)
                     }
                 }
             }
         }
     }
     
-    func installKexts(forceOverwrite: Bool, backupExisting: Bool, rebuildCache: Bool) {
+    func installKexts(forceOverwrite: Bool, backupExisting: Bool, rebuildCache: Bool, installToLE: Bool, installToPrivateFrameworks: Bool) {
         guard !kextPaths.isEmpty else {
-            logPublisher.send("错误: 未选择任何Kext文件")
+            logPublisher.send("error_not_selected_bundle".localized)
             return
         }
         
         let selectedKDKpath: String
         if let selectedKDKvalue = selectedKDK {
-            logPublisher.send("是否选择KDK：\(isKDKSelected)")
+            logPublisher.send("whether_select_kdk".localized + "：\(isKDKSelected)")
             selectedKDKpath = selectedKDKvalue
         } else {
-            logPublisher.send("信息: 未选择任何KDK")
+            logPublisher.send("info_not_selected_kdk".localized)
             selectedKDKpath = ""
         }
         
         isInstalling = true
         installationProgress = 0
-        logPublisher.send("开始安装Kext文件...")
-        logPublisher.send("选项: 强制覆盖=\(forceOverwrite), 备份=\(backupExisting), 重建缓存=\(rebuildCache)")
+        logPublisher.send("starting_install_kext".localized)
+        logPublisher.send("options".localized + ": " + "force".localized + "=\(forceOverwrite)," +  "backup".localized + "=\(backupExisting)," + "rebuild".localized + "=\(rebuildCache)")
         
         startProgressUpdates()
         
         let shellScript: String
         if isKDKSelected {
-            logPublisher.send("开始合并KDK并安装Kext...")
+            logPublisher.send("starting_merge_and_install".localized)
             shellScript = """
             echo '开始合并KDK并安装Kext...' && \
             echo '开始合并KDK进程...' && \
@@ -222,7 +226,7 @@ class KDKMerger: ObservableObject {
             fi && \
             echo "挂载路径: $MOUNT_PATH" && \
             rsync -r -i -a "\(selectedKDKpath)/System/Library/Extensions/" "$MOUNT_PATH/System/Library/Extensions" && \
-            \(kextInstallationCommands(mountPath: "$MOUNT_PATH", forceOverwrite: forceOverwrite, backupExisting: backupExisting)) && \
+            \(kextInstallationCommands(mountPath: "$MOUNT_PATH", forceOverwrite: forceOverwrite, backupExisting: backupExisting, installToLE: installToLE, installToPrivateFrameworks: installToPrivateFrameworks)) && \
             \(rebuildCache ? "kmutil create --volume-root \"$MOUNT_PATH\" --update-all --allow-missing-kdk &&" : "") \
             kmutil create --volume-root "$MOUNT_PATH" --update-all --allow-missing-kdk && \
             bless --mount "$MOUNT_PATH" --bootefi --create-snapshot && \
@@ -232,7 +236,7 @@ class KDKMerger: ObservableObject {
             echo '操作完成'
             """
         } else {
-            logPublisher.send("开始安装Kext...")
+            logPublisher.send("starting_install_kext".localized)
             shellScript = """
             echo '开始安装Kext...' && \
             ROOT_VOLUME_ORIGIN=$(diskutil info -plist / | plutil -extract DeviceIdentifier xml1 -o - - | xmllint --xpath '//string[1]/text()' -) && \
@@ -259,7 +263,7 @@ class KDKMerger: ObservableObject {
                 MOUNT_PATH='/'; \
             fi && \
             echo "挂载路径: $MOUNT_PATH" && \
-            \(kextInstallationCommands(mountPath: "$MOUNT_PATH", forceOverwrite: forceOverwrite, backupExisting: backupExisting)) && \
+            \(kextInstallationCommands(mountPath: "$MOUNT_PATH", forceOverwrite: forceOverwrite, backupExisting: backupExisting, installToLE: installToLE, installToPrivateFrameworks: installToPrivateFrameworks)) && \
             \(rebuildCache ? "kmutil create --volume-root \"$MOUNT_PATH\" --update-all --allow-missing-kdk &&" : "") \
             kmutil create --volume-root "$MOUNT_PATH" --update-all --allow-missing-kdk && \
             bless --mount "$MOUNT_PATH" --bootefi --create-snapshot && \
@@ -283,45 +287,60 @@ class KDKMerger: ObservableObject {
                     
                     if success {
                         self.installationProgress = 1.0
-                        self.logPublisher.send("安装完成")
+                        self.logPublisher.send("install_completed".localized)
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                             self.isInstalling = false
                             self.installationProgress = 0
                         }
-                        self.showAlert(title: "操作成功", message: "指定的内核扩展已安装")
+                        self.showAlert(title: "op_successfully".localized, message: "kext_has_been_installed".localized)
                     } else {
-                        self.logPublisher.send("错误: 安装失败 - \(output ?? "无输出")")
+                        self.logPublisher.send("error_installed_failed".localized + " - \(output ?? "none_out".localized)")
                         self.isInstalling = false
                         self.installationProgress = 0
-                        self.showAlert(title: "操作失败", message: output ?? "未知错误")
+                        self.showAlert(title: "op_failed".localized, message: output ?? "unkn_error".localized)
                     }
                 }
             }
         }
     }
     
-    private func kextInstallationCommands(mountPath: String, forceOverwrite: Bool, backupExisting: Bool) -> String {
+    private func kextInstallationCommands(mountPath: String, forceOverwrite: Bool, backupExisting: Bool, installToLE: Bool, installToPrivateFrameworks: Bool) -> String {
         var commands = [String]()
         let backupDir = "\(NSHomeDirectory())/Desktop/SimpleLoaderBak"
         
         // 创建备份目录（如果需要）
         if backupExisting {
-            commands.append("mkdir -p '\(backupDir)'")
+            commands.append("""
+                            mkdir -p "\(backupDir)"
+                """)
         }
         
         for path in kextPaths {
-            let kextName = URL(fileURLWithPath: path).lastPathComponent
-            let destPath = "\(mountPath)/System/Library/Extensions/\(kextName)"
+            let fileName = URL(fileURLWithPath: path).lastPathComponent
+            let fileExtension = URL(fileURLWithPath: path).pathExtension.lowercased()
             
-            commands.append("echo '正在处理 \(kextName)'")
+            var destDir = ""
+            if fileExtension == "framework" {
+                destDir = installToPrivateFrameworks ?
+                    "\(mountPath)/System/Library/PrivateFrameworks" :
+                    "\(mountPath)/System/Library/Frameworks"
+            } else {
+                destDir = installToLE ?
+                    "\(mountPath)/Library/Extensions" :
+                    "\(mountPath)/System/Library/Extensions"
+            }
+            
+            let destPath = "\(destDir)/\(fileName)"
+            
+            commands.append("echo '正在处理 \(fileName)'")
             
             // 备份现有文件（如果需要）
             if backupExisting {
                 commands.append("""
                 if [ -d "\(destPath)" ]; then \
-                    rsync -a "\(destPath)" "\(backupDir)/\(kextName)" && \
-                    echo "已备份原有 \(kextName)"; \
+                    rsync -a "\(destPath)" "\(backupDir)/\(fileName)" && \
+                    echo "已备份原有 \(fileName)"; \
                 fi
                 """)
             }
@@ -329,20 +348,20 @@ class KDKMerger: ObservableObject {
             // 安装新文件
             if forceOverwrite {
                 commands.append("""
-                rsync -r -i -a --delete "\(path)" "\(mountPath)/System/Library/Extensions/ \"
+                rsync -r -i -a --delete "\(path)" "\(destDir)/"
                 """)
             } else {
                 commands.append("""
                 if [ ! -d "\(destPath)" ]; then \
-                    rsync -r -i -a "\(path)" "\(mountPath)/System/Library/Extensions/"; \
+                    rsync -r -i -a "\(path)" "\(destDir)/"; \
                 else \
-                    echo "跳过已存在的 \(kextName)"; \
+                    echo "跳过已存在的 \(fileName)"; \
                 fi
                 """)
             }
             
             commands.append("""
-                            echo "已处理 \(kextName)"
+                            echo "已处理 \(fileName)"
             """)
         }
         return commands.joined(separator: " && \\\n")
@@ -372,22 +391,22 @@ class KDKMerger: ObservableObject {
         installationProgress = 0
         currentOperation = nil
         stopProgressUpdates()
-        logPublisher.send("操作已取消")
+        logPublisher.send("op_canceled".localized)
     }
     
     func openKDKDirectory() {
         let url = URL(fileURLWithPath: kdkDirectory)
         NSWorkspace.shared.open(url)
-        logPublisher.send("已打开KDK目录: \(kdkDirectory)")
+        logPublisher.send("opened_kdk_dir".localized + ": \(kdkDirectory)")
     }
     
     private func checkKDKDirectory() {
         let url = URL(fileURLWithPath: kdkDirectory)
         if fileManager.fileExists(atPath: url.path) {
-            logPublisher.send("KDK目录存在: \(kdkDirectory)")
+            logPublisher.send("kdk_dir_exists".localized + ": \(kdkDirectory)")
             refreshKDKList()
         } else {
-            logPublisher.send("警告: KDK目录不存在")
+            logPublisher.send("warning_kdk_dir_doesnt_exist".localized)
         }
     }
     
@@ -401,14 +420,14 @@ class KDKMerger: ObservableObject {
                 completion(true, output.stringValue)
             }
         } else {
-            completion(false, "无法创建 AppleScript 对象")
+            completion(false, "error_cant_gr_as".localized)
         }
     }
     
     func rebuildKernelCache() {
         isInstalling = true
         installationProgress = 0
-        logPublisher.send("开始重建内核缓存...")
+        logPublisher.send("starting_rebuild".localized)
         
         startProgressUpdates()
         
@@ -445,13 +464,13 @@ class KDKMerger: ObservableObject {
         echo '内核缓存重建完成'
         """
         
-        executeScriptWithProgress(shellScript: shellScript, successMessage: "内核缓存重建成功", failureMessage: "内核缓存重建失败")
+        executeScriptWithProgress(shellScript: shellScript, successMessage: "rebuild_successfully".localized, failureMessage: "rebuild_failed".localized)
     }
     
     func createSystemSnapshot() {
         isInstalling = true
         installationProgress = 0
-        logPublisher.send("开始创建系统快照...")
+        logPublisher.send("starting_snapshot".localized)
         
         startProgressUpdates()
         
@@ -488,13 +507,13 @@ class KDKMerger: ObservableObject {
         echo '系统快照创建完成'
         """
         
-        executeScriptWithProgress(shellScript: shellScript, successMessage: "系统快照创建成功", failureMessage: "系统快照创建失败")
+        executeScriptWithProgress(shellScript: shellScript, successMessage: "snapshot_successfully".localized, failureMessage: "snapshot_failed".localized)
     }
     
     func restoreLastSnapshot() {
         isInstalling = true
         installationProgress = 0
-        logPublisher.send("开始恢复最后一个快照...")
+        logPublisher.send("last_sealed_snapshot".localized)
         
         startProgressUpdates()
         
@@ -531,7 +550,7 @@ class KDKMerger: ObservableObject {
         echo '快照恢复完成'
         """
         
-        executeScriptWithProgress(shellScript: shellScript, successMessage: "快照恢复成功", failureMessage: "快照恢复失败")
+        executeScriptWithProgress(shellScript: shellScript, successMessage: "revert_successfully".localized, failureMessage: "revert_failed".localized)
     }
     
     private func executeScriptWithProgress(shellScript: String, successMessage: String, failureMessage: String) {
@@ -549,10 +568,10 @@ class KDKMerger: ObservableObject {
                     if success {
                         self.installationProgress = 1.0
                         self.logPublisher.send(successMessage)
-                        self.showAlert(title: "操作成功", message: successMessage)
+                        self.showAlert(title: "op_successfully".localized, message: successMessage)
                     } else {
-                        self.logPublisher.send("错误: \(failureMessage) - \(output ?? "无输出")")
-                        self.showAlert(title: "操作失败", message: output ?? failureMessage)
+                        self.logPublisher.send("error".localized + ": \(failureMessage) - \(output ?? "none_out".localized)")
+                        self.showAlert(title: "op_failed".localized, message: output ?? failureMessage)
                     }
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {

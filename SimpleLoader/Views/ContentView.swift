@@ -9,12 +9,19 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
+    @EnvironmentObject var languageManager: LanguageManager
     @StateObject private var kdkMerger = KDKMerger()
     @State private var showAdvancedOptions = false
     @State private var forceOverwrite = false
     @State private var backupExisting = false
+    @State private var installToLE = false
+    @State private var installToPrivateFrameworks = false
+    @State private var fullKDKMerge = false
     @State private var alertMessage: AlertMessage? = nil
     @State private var showAbout = false
+    
+    // 添加一个强制刷新的ID
+    @State private var refreshID = UUID()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -33,7 +40,10 @@ struct ContentView: View {
                     InstallationOptionsView(
                         showAdvancedOptions: $showAdvancedOptions,
                         forceOverwrite: $forceOverwrite,
-                        backupExisting: $backupExisting
+                        backupExisting: $backupExisting,
+                        installToLE: $installToLE,
+                        installToPrivateFrameworks: $installToPrivateFrameworks,
+                        fullKDKMerge: $fullKDKMerge
                     )
                     
                     StatusView(
@@ -55,22 +65,24 @@ struct ContentView: View {
                             kdkMerger.installKexts(
                                 forceOverwrite: forceOverwrite,
                                 backupExisting: backupExisting,
-                                rebuildCache: true
+                                rebuildCache: true,
+                                installToLE: installToLE,
+                                installToPrivateFrameworks: installToPrivateFrameworks
                             )
                         },
-                        mergeAction: kdkMerger.mergeKDK,
+                        mergeAction: { kdkMerger.mergeKDK(fullMerge: fullKDKMerge) },
                         cancelAction: kdkMerger.cancelOperation,
                         openKDKDirectoryAction: kdkMerger.openKDKDirectory,
                         rebuildCacheAction: {
-                            kdkMerger.currentOperation = "正在重建内核缓存"
+                            kdkMerger.currentOperation = "Rebuilding kernel cache".localized
                             kdkMerger.rebuildKernelCache()
                         },
                         createSnapshotAction: {
-                            kdkMerger.currentOperation = "正在创建系统快照"
+                            kdkMerger.currentOperation = "Creating system snapshot".localized
                             kdkMerger.createSystemSnapshot()
                         },
                         restoreSnapshotAction: {
-                            kdkMerger.currentOperation = "正在恢复快照"
+                            kdkMerger.currentOperation = "Restoring snapshot".localized
                             kdkMerger.restoreLastSnapshot()
                         },
                         aboutAction: { showAbout = true }
@@ -82,22 +94,28 @@ struct ContentView: View {
             
             FooterView()
         }
+        .id(refreshID) // 使用ID强制刷新整个视图
         .animation(.spring(response: 0.3, dampingFraction: 0.7), value: showAdvancedOptions)
         .sheet(isPresented: $showAbout) {
-                    AboutView()
-                }
+            AboutView()
+                .environmentObject(languageManager)
+        }
         .alert(item: $alertMessage) { message in
             Alert(
                 title: Text(message.title),
                 message: Text(message.message),
-                dismissButton: .default(Text("确定"))
-                )
+                dismissButton: .default(Text("OK".localized)))
         }
         .onReceive(kdkMerger.alertPublisher) { message in
             alertMessage = message
         }
+        .onChange(of: languageManager.currentLanguage) { _ in
+            // 当语言改变时，更新refreshID强制刷新视图
+            refreshID = UUID()
+        }
     }
 }
+
 
 struct AlertMessage: Identifiable {
     var id: String { title + message }

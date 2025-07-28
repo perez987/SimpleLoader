@@ -14,12 +14,12 @@ struct HeaderView: View {
                 Image(systemName: "hammer.fill")
                     .font(.system(size: 24))
                     .foregroundColor(.accentColor)
-                Text("SimpleLoader 系统扩展安装工具")
+                Text("app_title".localized)
                     .font(.system(size: 24, weight: .bold))
                 Spacer()
             }
             
-            Text("自动合并 KDK 并安装 Kext/Bundle 到 /System/Library/Extensions")
+            Text("app_subtitle".localized)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
         }

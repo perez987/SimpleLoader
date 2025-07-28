@@ -15,7 +15,7 @@ struct StatusView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("状态")
+            Text("status".localized)
                 .font(.headline)
             
             if isInstalling || isMerging {
@@ -23,7 +23,7 @@ struct StatusView: View {
                     if let operation = currentOperation {
                         Text(operation)
                     } else {
-                        Text(isInstalling ? "正在安装..." : "正在合并KDK...")
+                        Text(isInstalling ? "installing".localized : "merging".localized)
                     }
                 } currentValueLabel: {
                     Text("\(Int(progress * 100))%")
@@ -37,7 +37,7 @@ struct StatusView: View {
                         Text(operation)
                             .font(.caption)
                     } else {
-                        Text(isInstalling ? "正在将 Kext 安装到 /System/Library/Extensions" : "正在合并 KDK 文件")
+                        Text(isInstalling ? "installing_kext".localized : "merging_kdk".localized)
                             .font(.caption)
                     }
                 }
@@ -45,7 +45,7 @@ struct StatusView: View {
             } else {
                 HStack {
                     Image(systemName: "info.circle")
-                    Text("准备就绪")
+                    Text("ready".localized)
                         .font(.caption)
                 }
                 .foregroundColor(.secondary)

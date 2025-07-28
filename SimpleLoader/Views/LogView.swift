@@ -12,7 +12,7 @@ struct LogView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("操作日志")
+            Text("opLogs".localized)
                 .font(.headline)
             
             ScrollViewReader { proxy in

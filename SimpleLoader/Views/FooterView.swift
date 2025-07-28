@@ -12,11 +12,11 @@ struct FooterView: View {
         VStack(spacing: 4) {
             Divider()
             HStack {
-                Text("© 2025 laobamac. 保留所有权利。")
+                Text("© 2025 laobamac. " + "rights_reserved".localized + "。")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Spacer()
-                Text("版本 1.0.0")
+                Text("version".localized + " 1.0.1")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Link("GitHub", destination: URL(string: "https://github.com/laobamac/SimpleLoader")!)

@@ -25,7 +25,7 @@ struct ActionButtonsView: View {
         VStack(spacing: 12) {
             HStack(spacing: 12) {
                 Button(action: openKDKDirectoryAction) {
-                    Label("打开KDK目录", systemImage: "folder")
+                    Label("open_kdk_dir".localized, systemImage: "folder")
                         .frame(minWidth: 120)
                 }
                 .buttonStyle(SecondaryButtonStyle())
@@ -34,7 +34,7 @@ struct ActionButtonsView: View {
                 
                 if isInstalling || isMerging {
                     Button(action: cancelAction) {
-                        Label("取消", systemImage: "xmark")
+                        Label("cancel".localized, systemImage: "xmark")
                             .frame(minWidth: 100)
                     }
                     .keyboardShortcut(.cancelAction)
@@ -42,7 +42,7 @@ struct ActionButtonsView: View {
                     .transition(.scale)
                 } else {
                     Button(action: mergeAction) {
-                        Label("仅合并KDK", systemImage: "square.stack.3d.down.right")
+                        Label("only_merge_kdk".localized, systemImage: "square.stack.3d.down.right")
                             .frame(minWidth: 120)
                     }
                     .keyboardShortcut("m", modifiers: [.command])
@@ -51,7 +51,7 @@ struct ActionButtonsView: View {
                     .transition(.move(edge: .trailing))
                     
                     Button(action: installAction) {
-                        Label("开始安装", systemImage: "arrow.down.circle")
+                        Label("start_install".localized, systemImage: "arrow.down.circle")
                             .frame(minWidth: 120)
                     }
                     .keyboardShortcut(.defaultAction)
@@ -66,7 +66,7 @@ struct ActionButtonsView: View {
             
             HStack(spacing: 12) {
                 Button(action: aboutAction) {
-                    Label("关于软件", systemImage: "info.square.fill")
+                    Label("about".localized, systemImage: "info.square.fill")
                         .frame(minWidth: 120)
                 }
                 .buttonStyle(SecondaryButtonStyle())
@@ -74,19 +74,19 @@ struct ActionButtonsView: View {
                 Spacer()
                 
                 Button(action: rebuildCacheAction) {
-                    Label("重建缓存", systemImage: "arrow.clockwise")
+                    Label("rebuild".localized, systemImage: "arrow.clockwise")
                         .frame(minWidth: 120)
                 }
                 .buttonStyle(SecondaryButtonStyle())
                 
                 Button(action: createSnapshotAction) {
-                    Label("创建快照", systemImage: "camera")
+                    Label("creat_snapshot".localized, systemImage: "camera")
                         .frame(minWidth: 120)
                 }
                 .buttonStyle(SecondaryButtonStyle())
                 
                 Button(action: restoreSnapshotAction) {
-                    Label("恢复快照", systemImage: "arrow.uturn.backward")
+                    Label("restore_snapshot".localized, systemImage: "arrow.uturn.backward")
                         .frame(minWidth: 120)
                 }
                 .buttonStyle(SecondaryButtonStyle())
