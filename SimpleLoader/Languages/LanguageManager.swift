@@ -42,6 +42,7 @@ class LanguageManager: ObservableObject {
         case "zh-Hans": return "简体中文"
         case "zh-Hant": return "繁体中文"
         case "es": return "Español"
+        case "it": return "Italian"
         default: return language
         }
     }
