@@ -1,0 +1,120 @@
+//
+//  Localizable.strings
+//  SimpleLoader
+//
+//  Created by laobamac on 2025/7/28.
+//
+
+/*
+  Localizable.strings (Italian)
+  SimpleLoader
+*/
+
+"app_title" = "Installatore di estensioni SimpleLoader";
+"app_subtitle" = "Combina automaticamente KDK e installa Kext/Bundle In /System/Library/Extensions";
+"installation_options" = "Opzioni di installazione";
+"show_advanced" = "Mostra opzioni avanzate";
+"hide_advanced" = "Nascondi opzioni avanzate";
+"force_overwrite" = "Forzare la sovrascrittura dei file esistenti";
+"backup_existing" = "Eseguire il backup di Kext/Framework esistenti";
+"advanced_options" = "Opzioni avanzate";
+"install_to_le" = "Installare in /Library/Extensions";
+"install_to_private" = "Consenti installazione Framework in /System/Library/PrivateFrameworks";
+"private_warning" = "Attenzione: l'installazione su PrivateFrameworks può causare arresti anomali del sistema";
+"full_kdk_merge" = "Combinare KDK completo (incluso Kernel)";
+"kdk_warning" = "Non consigliato: la combinazione completa di KDK occuperà spazio aggiuntivo e comporterà rischi per la sicurezza";
+"status" = "Status";
+"ready" = "Pronto";
+"installing_kext" = "Installazione di Kext in /System/Library/Extensions";
+"merging_kdk" = "Combinazione di file KDK";
+"starting_merge_and_install" = "Avvio della combinazione KDK e dell'installazione di Kext...";
+"starting_install_kext" = "Avvio dell'installazione del file Kext...";
+"select_kext" = "Seleziona file Kext/Framework";
+"drop_files" = "Trascina e rilascia i file Kext/Framework qui";
+"select_files" = "Clicca qui per selezionare i file...";
+"operation_log" = "Registro delle operazioni";
+"waiting" = "In attesa di operazione...";
+"open_kdk" = "Apri la directory KDK";
+"merge_kdk" = "Unisci_kdk";
+"start_install" = "Avvia l'installazione";
+"cancel" = "Annullare";
+"about" = "A proposito di";
+"rebuild_cache" = "Ricostruisci_cache";
+"create_snapshot" = "Crea_istantanea";
+"restore_snapshot" = "Ripristina_istantanea";
+"version" = "Versione";
+"author" = "Autore";
+"copyright" = "Copyright";
+"contributors" = "Collaboratori";
+"visit_github" = "Visita il repository GitHub";
+"close" = "Chiudere";
+"rights_reserved" = "Tutti i diritti riservati";
+"contributor1" = "laobamac - Sviluppatore";
+"contributor2" = "perez987 - Traduzione parziale in inglese";
+"auto_detect" = "Rilevamento automatico";
+"language_settings" = "Configurazione della lingua";
+"language" = "Lingua";
+"change_language" = "Cambiare lingua";
+"opLogs" = "Registro Operazioni";
+"installing" = "Installazione...";
+"merging" = "Fusione KDK...";
+"found" = "Trovato";
+"warning_no_kdk" = "Avvertenza: KDK non è stato trovato, installare prima KDK";
+"warning" = "Avvertenza";
+"error" = "Errore";
+"none_out" = "Senza via d'uscita";
+"unkn_error" = "Errore sconosciuto";
+"error_cant_read_kdk_dir" = "Errore: Impossibile leggere la directory KDK";
+"error_not_selected_kdk" = "Errore: KDK non è stato selezionato";
+"error_merged_kdk_failed" = "Errore_fusione_kdk_fallita";
+"error_not_selected_bundle" = "Errore: nessun file Kext selezionato";
+"error_installed_failed" = "Errore: installazione fallita";
+"not_selected_kdk" = "KDK non è stato selezionato";
+"starting_merging" = "Iniziando la combinazione di KDK";
+"locating_root_vol" = "Individuare il volume radice...";
+"starting_merging_to_root_vol" = "Avviando la combinazione di KDK al volume radice";
+"slow_step" = "Questo passo è lento, non forzare l'arresto!";
+"merged_completed_umounted" = "Combinazione completata, volume radice smontato";
+"merged_successfully" = "Unito_con successo";
+"merged_failed" = "Combinazione fallita";
+"kdk_merged_successfully" = "kdk_fuso_con successo";
+"whether_select_kdk" = "Selezionare KDK?";
+"info_not_selected_kdk" = "Informazioni: Nessun KDK selezionato";
+"options" = "Opciones";
+"force" = "Forzare la sovrascrittura";
+"backup" = "Copia di backup";
+"rebuild" = "Ricostruisci la cache";
+"about" = "A proposito di";
+"install_completed" = "Installazione completata";
+"op_successfully" = "Operazione riuscita";
+"op_failed" = "Operazione fallita";
+"kext_has_been_installed" = "L'estensione del kernel specificata è stata installata";
+"op_canceled" = "Operazione annullata";
+"open_kdk_dir" = "Apri la directory KDK";
+"opened_kdk_dir" = "Directory KDK aperta";
+"kdk_dir_exists" = "Directory KDK Esistente";
+"warning_kdk_dir_doesnt_exist" = "Avvuso kdk dir non esiste";
+"error_cant_gr_as" = "Impossibile creare un oggetto AppleScript";
+"starting_rebuild" = "Avvio della ricostruzione della cache del kernel...";
+"rebuild_successfully" = "Cache del kernel ricostruita con successo";
+"rebuild_failed" = "Errore nella ricostruzione della cache del kernel";
+"starting_snapshot" = "Avvio della creazione di istantanee del sistema...";
+"snapshot_successfully" = "Istantanea del sistema creata con successo";
+"snapshot_failed" = "Errore nella creazione di istantanee di sistema";
+"last_sealed_snapshot" = "Avvio del ripristino dell'ultima istantanea...";
+"revert_successfully" = "Istantanea ripristinata con successo";
+"revert_failed" = "Ripristino Instantanea fallito";
+"selected_kdk" = "KDK selezionato";
+"cancel" = "Annullare";
+"only_merge_kdk" = "Combina solo KDK";
+"creat_snapshot" = "Crea Istantanea";
+"restore_snapshot" = "Ripristina Istantanea";
+"select_kdk" = "Seleziona KDK";
+"select_installed_kdk" = "Seleziona KDK installato";
+"not_selected" = "Non selezionato";
+"refresh" = "Aggiorna";
+"effective_kdk" = "KDK selezionato valido";
+"choose_bundle" = "Scegliere file Kext/Framework";
+"drag_here" = "Trascina e rilascia i file Kext/Framework qui";
+"or" = "O";
+"click_to_choose" = "Clicca qui per selezionare i file ...";
