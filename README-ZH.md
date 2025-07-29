@@ -9,7 +9,7 @@
 
 一款专为 macOS 设计的图形化工具，用于安全地合并 KDK（Kernel Development Kit）和安装内核扩展（Kext）到系统目录。
 
-### [English version - 英文版](README-EN.md) ###
+### [English version - 英文版](README.md) ###
 
 ## 功能特性
 
