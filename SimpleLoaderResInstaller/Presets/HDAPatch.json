@@ -1,0 +1,17 @@
+{
+    "name": "音频补丁",
+    "author": "laobamac",
+    "description": "在macOS Tahoe上恢复AppleHDA.kext",
+    "version": "1.0.0",
+    "requiresKDK": true,
+    "files": [
+        {
+            "source": "AppleHDA.kext",
+            "destination": "/System/Library/Extensions",
+            "conflictResolution": "overwrite",
+            "systemVersion": "26.0Beta1"
+        },
+    ],
+    "rebuildCache": true,
+    "createSnapshot": true
+}

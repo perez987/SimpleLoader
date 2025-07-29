@@ -19,8 +19,7 @@ struct ContentView: View {
     @State private var fullKDKMerge = false
     @State private var alertMessage: AlertMessage? = nil
     @State private var showAbout = false
-    
-    // 添加一个强制刷新的ID
+    @State private var showPresetsView = false
     @State private var refreshID = UUID()
     
     var body: some View {
@@ -74,18 +73,19 @@ struct ContentView: View {
                         cancelAction: kdkMerger.cancelOperation,
                         openKDKDirectoryAction: kdkMerger.openKDKDirectory,
                         rebuildCacheAction: {
-                            kdkMerger.currentOperation = "Rebuilding kernel cache".localized
+                            kdkMerger.currentOperation = "rebuilding_cache".localized
                             kdkMerger.rebuildKernelCache()
                         },
                         createSnapshotAction: {
-                            kdkMerger.currentOperation = "Creating system snapshot".localized
+                            kdkMerger.currentOperation = "creating_snapshot".localized
                             kdkMerger.createSystemSnapshot()
                         },
                         restoreSnapshotAction: {
-                            kdkMerger.currentOperation = "Restoring snapshot".localized
+                            kdkMerger.currentOperation = "restore_snapshot".localized
                             kdkMerger.restoreLastSnapshot()
                         },
-                        aboutAction: { showAbout = true }
+                        aboutAction: { showAbout = true },
+                        presetsAction: { showPresetsView = true }
                     )
                 }
                 .padding()
@@ -94,11 +94,21 @@ struct ContentView: View {
             
             FooterView()
         }
-        .id(refreshID) // 使用ID强制刷新整个视图
+        .id(refreshID)
         .animation(.spring(response: 0.3, dampingFraction: 0.7), value: showAdvancedOptions)
         .sheet(isPresented: $showAbout) {
             AboutView()
                 .environmentObject(languageManager)
+        }
+        .sheet(isPresented: $showPresetsView) {
+            PresetsView(
+                kdkMerger: kdkMerger,
+                forceOverwrite: $forceOverwrite,
+                backupExisting: $backupExisting,
+                installToLE: $installToLE,
+                installToPrivateFrameworks: $installToPrivateFrameworks
+            )
+            .environmentObject(languageManager)
         }
         .alert(item: $alertMessage) { message in
             Alert(
@@ -110,12 +120,10 @@ struct ContentView: View {
             alertMessage = message
         }
         .onChange(of: languageManager.currentLanguage) { _ in
-            // 当语言改变时，更新refreshID强制刷新视图
             refreshID = UUID()
         }
     }
 }
-
 
 struct AlertMessage: Identifiable {
     var id: String { title + message }

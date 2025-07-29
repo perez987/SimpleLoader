@@ -119,3 +119,6 @@
 "drag_here" = "Drag and drop Kext/Framework files here";
 "or" = "Or";
 "click_to_choose" = "Click to select files...";
+"rebuilding_cache" = "Rebuilding kernel cache.";
+"creating_snapshot" = "Creating system snapshot.";
+"restore_snapshot" = "Restoring snapshot.";

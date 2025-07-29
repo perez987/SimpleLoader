@@ -8,16 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		BB17B9932E367B7A00F80156 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BB17B9922E367B7300F80156 /* README.md */; };
+		BBE0F9502E38E83D00285A05 /* README-EN.md in Resources */ = {isa = PBXBuildFile; fileRef = BBE0F94F2E38E83D00285A05 /* README-EN.md */; };
+		BBE0F9952E38E96D00285A05 /* Presets in Resources */ = {isa = PBXBuildFile; fileRef = BBE0F9942E38E96D00285A05 /* Presets */; };
+		BBE0F9972E38E97E00285A05 /* PresetFiles in Resources */ = {isa = PBXBuildFile; fileRef = BBE0F9962E38E97E00285A05 /* PresetFiles */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BB136A4F2E35B928008F000D /* SimpleLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB17B9922E367B7300F80156 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BBE0F94F2E38E83D00285A05 /* README-EN.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "README-EN.md"; sourceTree = "<group>"; };
+		BBE0F9942E38E96D00285A05 /* Presets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Presets; path = SimpleLoader/Presets; sourceTree = "<group>"; };
+		BBE0F9962E38E97E00285A05 /* PresetFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PresetFiles; path = SimpleLoader/PresetFiles; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BBE0F9912E38E91B00285A05 /* Exceptions for "SimpleLoader" folder in "SimpleLoader" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Presets/HDAPatch.json,
+			);
+			target = BB136A4E2E35B928008F000D /* SimpleLoader */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BB136A512E35B928008F000D /* SimpleLoader */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BBE0F9912E38E91B00285A05 /* Exceptions for "SimpleLoader" folder in "SimpleLoader" target */,
+			);
 			path = SimpleLoader;
 			sourceTree = "<group>";
 		};
@@ -37,7 +56,10 @@
 		BB136A462E35B928008F000D = {
 			isa = PBXGroup;
 			children = (
+				BBE0F9962E38E97E00285A05 /* PresetFiles */,
+				BBE0F9942E38E96D00285A05 /* Presets */,
 				BB17B9922E367B7300F80156 /* README.md */,
+				BBE0F94F2E38E83D00285A05 /* README-EN.md */,
 				BB136A512E35B928008F000D /* SimpleLoader */,
 				BB136A502E35B928008F000D /* Products */,
 			);
@@ -100,6 +122,7 @@
 				"zh-Hans",
 				"zh-Hant",
 				es,
+				it,
 			);
 			mainGroup = BB136A462E35B928008F000D;
 			minimizedProjectReferenceProxies = 1;
@@ -118,7 +141,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBE0F9972E38E97E00285A05 /* PresetFiles in Resources */,
+				BBE0F9952E38E96D00285A05 /* Presets in Resources */,
 				BB17B9932E367B7A00F80156 /* README.md in Resources */,
+				BBE0F9502E38E83D00285A05 /* README-EN.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

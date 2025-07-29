@@ -21,6 +21,7 @@ class KDKMerger: ObservableObject {
     @Published var kdkItems: [String] = []
     @Published var logPublisher = PassthroughSubject<String, Never>()
     @Published var currentOperation: String? = nil
+    @Published var mergeOperations: [(source: String, destination: String)] = []
     
     private let fileManager = FileManager.default
     private let kdkDirectory = "/Library/Developer/KDKs"
@@ -161,6 +162,7 @@ class KDKMerger: ObservableObject {
                             self.installationProgress = 0
                         }
                         self.showAlert(title: "merged_successfully".localized, message: "kdk_merged_successfully".localized)
+                        self.showRestartPrompt()
                     } else {
                         self.logPublisher.send("error_merged_kdk_failed".localized + " - \(output ?? "none_out".localized)")
                         self.isMerging = false
@@ -294,6 +296,7 @@ class KDKMerger: ObservableObject {
                             self.installationProgress = 0
                         }
                         self.showAlert(title: "op_successfully".localized, message: "kext_has_been_installed".localized)
+                        self.showRestartPrompt()
                     } else {
                         self.logPublisher.send("error_installed_failed".localized + " - \(output ?? "none_out".localized)")
                         self.isInstalling = false
@@ -316,6 +319,7 @@ class KDKMerger: ObservableObject {
                 """)
         }
         
+        // 处理普通文件
         for path in kextPaths {
             let fileName = URL(fileURLWithPath: path).lastPathComponent
             let fileExtension = URL(fileURLWithPath: path).pathExtension.lowercased()
@@ -364,6 +368,24 @@ class KDKMerger: ObservableObject {
                             echo "已处理 \(fileName)"
             """)
         }
+        
+        // 处理合并操作
+        for operation in mergeOperations {
+            let source = operation.source
+            let destination = "\(mountPath)\(operation.destination)"
+            let fileName = URL(fileURLWithPath: source).lastPathComponent
+            
+            commands.append("""
+            echo '开始合并文件: \(fileName)'
+            if [ -d "\(destination)" ]; then \
+                rsync -r -i -a "\(source)/" "\(destination)/" && \
+                echo "已合并 \(fileName)"; \
+            else \
+                echo "错误: 目标目录不存在 \(destination)"; \
+            fi
+            """)
+        }
+        
         return commands.joined(separator: " && \\\n")
     }
     
@@ -392,6 +414,12 @@ class KDKMerger: ObservableObject {
         currentOperation = nil
         stopProgressUpdates()
         logPublisher.send("op_canceled".localized)
+        
+        let alert = NSAlert()
+        alert.messageText = "operation_canceled_title".localized
+        alert.informativeText = "operation_canceled_message".localized
+        alert.addButton(withTitle: "OK".localized)
+        alert.runModal()
     }
     
     func openKDKDirectory() {
@@ -569,6 +597,7 @@ class KDKMerger: ObservableObject {
                         self.installationProgress = 1.0
                         self.logPublisher.send(successMessage)
                         self.showAlert(title: "op_successfully".localized, message: successMessage)
+                        self.showRestartPrompt()
                     } else {
                         self.logPublisher.send("error".localized + ": \(failureMessage) - \(output ?? "none_out".localized)")
                         self.showAlert(title: "op_failed".localized, message: output ?? failureMessage)
@@ -578,6 +607,25 @@ class KDKMerger: ObservableObject {
                         self.isInstalling = false
                         self.installationProgress = 0
                     }
+                }
+            }
+        }
+    }
+    
+    private func showRestartPrompt() {
+        DispatchQueue.main.async {
+            let alert = NSAlert()
+            alert.messageText = "operation_success_title".localized
+            alert.informativeText = "operation_success_restart_message".localized
+            alert.addButton(withTitle: "restart_now".localized)
+            alert.addButton(withTitle: "restart_later".localized)
+            
+            let response = alert.runModal()
+            if response == .alertFirstButtonReturn {
+                // 立即重启
+                let script = "tell application \"System Events\" to restart"
+                if let appleScript = NSAppleScript(source: script) {
+                    appleScript.executeAndReturnError(nil)
                 }
             }
         }
