@@ -15,6 +15,7 @@ struct AboutView: View {
     let contributors = [
         "contributor1".localized,
         "contributor2".localized,
+        "contributor3".localized,
     ]
     
     var body: some View {
@@ -91,7 +92,7 @@ struct AboutView: View {
             .frame(width: 120)
         }
         .padding()
-        .frame(width: 320, height: 410)
+        .frame(width: 325, height: 425)
     }
 }
 
