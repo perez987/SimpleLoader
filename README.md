@@ -1,89 +1,86 @@
-# SimpleLoader - macOS 系统扩展安装工具
+# SimpleLoader - macOS System Extension Installer
 
-![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
-![Platform](https://img.shields.io/badge/macOS-11+-blue.svg)
-![License](https://img.shields.io/badge/License-GPLv3-green.svg)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/laobamac/SimpleLoader)
-![GitHub all releases](https://img.shields.io/github/downloads/laobamac/SimpleLoader/total?color=white&style=plastic)
-<img width="5115" alt="FDC16D4518C49BD1EEAD4B3423A1964D" src="https://github.com/user-attachments/assets/22899249-51a8-4fe4-9e12-a9a2f7aee826" />
+![](SimpleLoader-EN.png)
 
-一款专为 macOS 设计的图形化工具，用于安全地合并 KDK（Kernel Development Kit）和安装内核扩展（Kext）到系统目录。
+A graphical tool designed for macOS to safely merge KDK (Kernel Development Kit) and install kernel extensions (Kext) to the system directory.
 
-### [English version - 英文版](README-EN.md) ###
+### [中文版 - Chinese version](README.md) ###
 
-## 功能特性
+## Features
 
-### 核心功能
-🔧 **KDK 合并**
-- 自动检测 `/Library/Developer/KDKs` 目录下的 KDK 包
-- 提供可视化选择界面
-- 安全合并 KDK 到系统目录
+### Core Features
+🔧 **KDK Merge**
+- Automatically detect KDK packages in the `/Library/Developer/KDKs` directory
+- Provide a visual selection interface
+- Safely merge KDK into the system directory
 
-📦 **Kext 安装**
-- 拖放式文件选择界面
-- 支持批量安装多个 Kext
-- 可选的强制覆盖和备份功能
+📦 **Kext Installation**
+- Drag-and-drop file selection interface
+- Support batch installation of multiple Kexts
+- Optional forced overwrite and backup functions
 
-### 系统工具
-⚡ **缓存管理**
-- 一键重建内核缓存
-- 自动处理 Big Sur 及以上版本的只读系统卷
+### System Tools
+⚡ **Cache Management**
+- One-click kernel cache rebuild
+- Automatically handle read-only system volumes for Big Sur and above
 
-📸 **快照保护**
-- 创建 APFS 系统快照
-- 恢复到最后一次快照状态
-- 防止系统损坏的安全网
+📸 **Snapshot Protection**
+- Create APFS system snapshots
+- Restore to the last snapshot state
+- A safety net to prevent system damage
 
-## 技术栈
+## Technology Stack
 
-- **语言**: Swift 5.5
-- **UI框架**: SwiftUI
-- **最低系统要求**: macOS 11 Big Sur
-- **依赖管理**: Swift Package Manager
+- **Language**: Swift 5.5
+- **UI Framework**: SwiftUI
+- **Minimum System Requirements**: macOS 11 Big Sur
+- **Dependency Management**: Swift Package Manager
 
-## 安装方法
+## Installation method
 
-### 手动安装
-1. 下载最新版本 [Release](https://github.com/laobamac/SimpleLoader/releases)
-2. 解压后拖拽到 Applications 文件夹
+### Manual installation
+1. Download the latest version [Release](https://github.com/laobamac/SimpleLoader/releases)
+2. Unzip and drag to the Applications folder
 
-## 使用指南
+## User Guide
 
-1. **选择 KDK**
-   - 从下拉菜单中选择已安装的 KDK 版本
-   - 点击"刷新"按钮更新列表
+1. **Select KDK**
+- Select the installed KDK version from the drop-down menu
+- Click the "Refresh" button to update the list
 
-2. **添加 Kext**
-   - 拖放 `.kext/.bundle` 文件到指定区域，或点击按钮选择文件
-   - 可随时移除已选文件
+2. **Add Kext**
+- Drag and drop the `.kext/.bundle` file to the specified area, or click the button to select the file
+- You can remove the selected file at any time
 
-3. **设置选项**
-   - 强制覆盖：覆盖同名 Kext
-   - 备份现有：自动备份被替换的 Kext 到桌面
+3. **Set Options**
+- Force Overwrite: Overwrite Kext with the same name
+- Backup Existing: Automatically back up the replaced Kext to the desktop
 
-4. **执行操作**
-   - "仅合并 KDK"：只处理 KDK 不安装 Kext
-   - "开始安装"：合并 KDK 并安装所有选中的 Kext
+4. **Perform Action**
+- "Merge KDK Only": Only process KDK without installing Kext
+- "Start Installation": Merge KDK and install all selected Kexts
 
-## 高级功能
+## Advanced Features
 
-### 系统维护工具
-- **重建缓存**：修复内核扩展缓存
-- **创建快照**：创建系统恢复点
-- **恢复快照**：回滚到上次快照状态
+### System Maintenance Tools
+- **Rebuild Cache**: Repair the kernel extension cache
+- **Create Snapshot**: Create a system restore point
+- **Restore Snapshot**: Roll back to the last snapshot state
 
-## 开发者
+## Developers
 
 👨‍💻 **laobamac**
 - GitHub: [@laobamac](https://github.com/laobamac)
-- 邮箱: wxcznb@qq.com
+- Email: wxcznb@qq.com
 
-## 贡献指南
+## Contribution Guide
 
-欢迎提交 Issue 和 Pull Request！
-请确保代码符合项目规范并通过测试。
+Welcome to submit Issues and Pull Requests!
 
-## 开源协议
+Please make sure the code complies with the project specifications and passes the test.
 
-本项目采用 **GNU General Public License v3.0** 开源协议。
-完整协议内容见 [LICENSE](LICENSE) 文件。
+## Open Source Agreement
+
+This project adopts the **GNU General Public License v3.0** open source agreement.
+
+For the full agreement, see the [LICENSE](LICENSE) file.
