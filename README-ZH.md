@@ -6,7 +6,7 @@
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/laobamac/SimpleLoader)
 ![GitHub all releases](https://img.shields.io/github/downloads/laobamac/SimpleLoader/total?color=white&style=plastic)
 
-<b> [English version (英文版)](README-EN.md) </b>
+<b> [English version (英文版)](README.md) </b>
 <br>
 
 <img width="5115" alt="FDC16D4518C49BD1EEAD4B3423A1964D" src="https://github.com/user-attachments/assets/22899249-51a8-4fe4-9e12-a9a2f7aee826" />
