@@ -1,10 +1,11 @@
 # SimpleLoader - macOS System Extension Installer
 
+<b> [中文版 (Chinese version)](README.md) </b>
+<br>
+
 ![](SimpleLoader-EN.png)
 
 A graphical tool designed for macOS to safely merge KDK (Kernel Development Kit) and install kernel extensions (Kext) to the system directory.
-
-### [中文版 - Chinese version](README.md) ###
 
 ## Features
 
