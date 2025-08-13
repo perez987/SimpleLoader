@@ -1,6 +1,6 @@
 # SimpleLoader - macOS System Extension Installer
 
-<b> [中文版 (Chinese version)](README.md) </b>
+<b> [中文版 (Chinese version)](README-ZH.md) </b>
 <br>
 
 ![](SimpleLoader-EN.png)
