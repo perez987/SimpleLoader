@@ -45,7 +45,7 @@ A graphical tool designed for macOS to safely merge KDK (Kernel Development Kit)
 ## Installation method
 
 ### Manual installation
-1. Download the latest version [Release](https://github.com/laobamac/SimpleLoader/releases)
+1. Download the latest version [Release](https://github.com/perez987/SimpleLoader/releases)
 2. Unzip and drag to the Applications folder
 
 ## User Guide
