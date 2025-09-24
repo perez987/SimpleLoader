@@ -23,14 +23,14 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            // 背景渐变
+            // Background Gradient
             LinearGradient(gradient: Gradient(colors: [Color(red: 0.1, green: 0.2, blue: 0.45), Color(red: 0.3, green: 0.1, blue: 0.5)]),
                            startPoint: .top,
                            endPoint: .bottom)
                 .ignoresSafeArea()
             
             VStack(spacing: 20) {
-                // 应用图标和标题
+                // App icon and title
                 VStack {
                     Image(systemName: "arrow.down.doc.fill")
                         .font(.system(size: 50))
@@ -42,7 +42,7 @@ struct ContentView: View {
                 }
                 .padding(.top, 30)
                 
-                // 状态显示
+                // Status display
                 VStack {
                     Text(statusText)
                         .font(.headline)
@@ -55,7 +55,7 @@ struct ContentView: View {
                         .padding(.horizontal, 40)
                 }
                 
-                // 操作按钮
+                // Action Button
                 Button(action: {
                     startInstallation()
                 }) {
@@ -72,14 +72,14 @@ struct ContentView: View {
                 .padding(.bottom, 30)
             }
             
-            // 成功提示
+            // Success Tips
             if showSuccess {
                 SuccessOverlay {
                     NSApplication.shared.terminate(nil)
                 }
             }
             
-            // 错误提示
+            // Error message
             if showError {
                 ErrorOverlay(message: errorMessage) {
                     showError = false
@@ -94,7 +94,7 @@ struct ContentView: View {
         
         DispatchQueue.global(qos: .userInitiated).async {
             do {
-                // 1. 查找目标应用
+                // 1. Find target applications
                 let targetAppName = "SimpleLoader.app"
                 guard let targetAppURL = findApplication(named: targetAppName) else {
                     throw InstallationError.targetAppNotFound
@@ -105,7 +105,7 @@ struct ContentView: View {
                     self.progress = 10
                 }
                 
-                // 2. 获取源资源路径
+                // 2. Get the source resource path
                 guard let sourceResourcesURL = Bundle.main.resourceURL else {
                     throw InstallationError.sourceResourcesNotFound
                 }
@@ -113,7 +113,7 @@ struct ContentView: View {
                 let sourcePresetFilesURL = sourceResourcesURL.appendingPathComponent("PresetFiles")
                 let sourcePresetsURL = sourceResourcesURL.appendingPathComponent("Presets")
                 
-                // 3. 检查源文件是否存在
+                // 3. Check if the source file exists
                 if !FileManager.default.fileExists(atPath: sourcePresetFilesURL.path) ||
                    !FileManager.default.fileExists(atPath: sourcePresetsURL.path) {
                     throw InstallationError.sourceFilesNotFound
@@ -124,7 +124,7 @@ struct ContentView: View {
                     self.progress = 30
                 }
                 
-                // 4. 复制 PresetFiles
+                // 4. Copy PresetFiles
                 let targetPresetFilesURL = targetAppURL.appendingPathComponent("Contents/Resources/PresetFiles")
                 try copyDirectory(from: sourcePresetFilesURL, to: targetPresetFilesURL)
                 
@@ -133,7 +133,7 @@ struct ContentView: View {
                     self.progress = 70
                 }
                 
-                // 5. 复制 Presets
+                // 5. Copy Presets
                 let targetPresetsURL = targetAppURL.appendingPathComponent("Contents/Resources/Presets")
                 try copyDirectory(from: sourcePresetsURL, to: targetPresetsURL)
                 
@@ -153,11 +153,11 @@ struct ContentView: View {
         }
     }
     
-    // 查找应用程序
+    // Find an application
     func findApplication(named appName: String) -> URL? {
         let fileManager = FileManager.default
         
-        // 1. 首先检查标准应用程序目录
+        // 1. First check the standard application directory
         if let appsDirectory = fileManager.urls(for: .applicationDirectory, in: .localDomainMask).first {
             let appURL = appsDirectory.appendingPathComponent(appName)
             if fileManager.fileExists(atPath: appURL.path) {
@@ -165,30 +165,30 @@ struct ContentView: View {
             }
         }
         
-        // 2. 检查当前应用所在目录
+        // 2. Check the directory where the current application is located
         let currentDirectoryURL = Bundle.main.bundleURL.deletingLastPathComponent()
         let adjacentAppURL = currentDirectoryURL.appendingPathComponent(appName)
         if fileManager.fileExists(atPath: adjacentAppURL.path) {
             return adjacentAppURL
         }
         
-        // 3. 都找不到返回nil
+        // 3. Can't find, return nil
         return nil
     }
     
-    // 复制目录
+    // Copy Directory
     func copyDirectory(from sourceURL: URL, to destinationURL: URL) throws {
         let fileManager = FileManager.default
         
-        // 如果目标目录存在，先删除
+        // If the target directory exists, delete it first
         if fileManager.fileExists(atPath: destinationURL.path) {
             try fileManager.removeItem(at: destinationURL)
         }
         
-        // 创建目标目录
+        // Create the target directory
         try fileManager.createDirectory(at: destinationURL, withIntermediateDirectories: true, attributes: nil)
         
-        // 获取源目录内容
+        // Get the source directory contents
         let contents = try fileManager.contentsOfDirectory(at: sourceURL, includingPropertiesForKeys: nil, options: [])
         
         for itemURL in contents {
@@ -203,7 +203,7 @@ struct ContentView: View {
     }
 }
 
-// 成功覆盖层
+// Successful
 struct SuccessOverlay: View {
     var onClose: () -> Void
     
@@ -245,7 +245,7 @@ struct SuccessOverlay: View {
     }
 }
 
-// 错误覆盖层
+// Error overlay
 struct ErrorOverlay: View {
     let message: String
     var onClose: () -> Void
@@ -289,7 +289,7 @@ struct ErrorOverlay: View {
     }
 }
 
-// 自定义错误类型
+// Custom error types
 enum InstallationError: Error, LocalizedError {
     case targetAppNotFound
     case sourceResourcesNotFound

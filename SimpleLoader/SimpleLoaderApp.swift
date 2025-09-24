@@ -17,9 +17,9 @@ struct SimpleLoaderApp: App {
             ContentView()
                 .environmentObject(languageManager)
                 .frame(
-                    minWidth: 860,
-					idealWidth: 860,
-					maxWidth: 860,
+                    minWidth: 880,
+					idealWidth: 880,
+					maxWidth: 880,
                     minHeight: 970,
 					idealHeight: 970,
 					maxHeight: 970
