@@ -1,0 +1,22 @@
+/*
+  Localizable.strings (English)
+  SimpleLoaderResInstaller
+*/
+
+"app_title" = "SimpleLoader Resource Installer";
+"app_subtitle" = "Install resource files to SimpleLoader.app";
+"prepare_install" = "Preparing to install resource files";
+"installing" = "Installing...";
+"start_install" = "Start Installation";
+"finding_target_app" = "Looking for target application...";
+"prepare_copy_resources" = "Preparing to copy resource files...";
+"copying_preset_files" = "Copying PresetFiles...";
+"copying_presets" = "Copying Presets...";
+"install_success" = "Installation Successful!";
+"install_success_message" = "Resource files have been successfully installed to SimpleLoader.app";
+"install_failed" = "Installation Failed";
+"confirm" = "OK";
+"target_app_not_found" = "SimpleLoader.app not found\nPlease ensure it is installed in the Applications folder or in the same directory as this installer";
+"source_resources_not_found" = "Source resource folder not found";
+"source_files_not_found" = "PresetFiles or Presets folders are missing from the source resource folder";
+"copy_failed" = "Error occurred while copying files";

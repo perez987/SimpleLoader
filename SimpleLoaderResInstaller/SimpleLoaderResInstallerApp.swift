@@ -13,8 +13,9 @@ struct SimpleLoaderResInstallerApp: App {
 }
 
 struct ContentView: View {
+    @StateObject private var languageManager = LanguageManager.shared
     @State private var progress: Double = 0
-    @State private var statusText = "准备安装资源文件"
+    @State private var statusText = "prepare_install".localized
     @State private var isInstalling = false
     @State private var showSuccess = false
     @State private var showError = false
@@ -34,7 +35,7 @@ struct ContentView: View {
                     Image(systemName: "arrow.down.doc.fill")
                         .font(.system(size: 50))
                         .foregroundColor(.white)
-                    Text("SimpleLoader 资源安装工具")
+                    Text("app_title".localized)
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -58,7 +59,7 @@ struct ContentView: View {
                 Button(action: {
                     startInstallation()
                 }) {
-                    Text(isInstalling ? "安装中..." : "开始安装")
+                    Text(isInstalling ? "installing".localized : "start_install".localized)
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
@@ -89,7 +90,7 @@ struct ContentView: View {
     
     func startInstallation() {
         isInstalling = true
-        statusText = "正在查找目标应用..."
+        statusText = "finding_target_app".localized
         
         DispatchQueue.global(qos: .userInitiated).async {
             do {
@@ -100,7 +101,7 @@ struct ContentView: View {
                 }
                 
                 DispatchQueue.main.async {
-                    self.statusText = "准备复制资源文件..."
+                    self.statusText = "prepare_copy_resources".localized
                     self.progress = 10
                 }
                 
@@ -119,7 +120,7 @@ struct ContentView: View {
                 }
                 
                 DispatchQueue.main.async {
-                    self.statusText = "正在复制 PresetFiles..."
+                    self.statusText = "copying_preset_files".localized
                     self.progress = 30
                 }
                 
@@ -128,7 +129,7 @@ struct ContentView: View {
                 try copyDirectory(from: sourcePresetFilesURL, to: targetPresetFilesURL)
                 
                 DispatchQueue.main.async {
-                    self.statusText = "正在复制 Presets..."
+                    self.statusText = "copying_presets".localized
                     self.progress = 70
                 }
                 
@@ -216,12 +217,12 @@ struct SuccessOverlay: View {
                     .font(.system(size: 60))
                     .foregroundColor(.green)
                 
-                Text("安装成功!")
+                Text("install_success".localized)
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                 
-                Text("资源文件已成功安装到 SimpleLoader.app")
+                Text("install_success_message".localized)
                     .font(.headline)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
@@ -259,7 +260,7 @@ struct ErrorOverlay: View {
                     .font(.system(size: 60))
                     .foregroundColor(.yellow)
                 
-                Text("安装失败")
+                Text("install_failed".localized)
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
@@ -270,7 +271,7 @@ struct ErrorOverlay: View {
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: 300)
                 
-                Button("确定") {
+                Button("confirm".localized) {
                     onClose()
                 }
                 .font(.headline)
@@ -298,13 +299,13 @@ enum InstallationError: Error, LocalizedError {
     var errorDescription: String? {
         switch self {
         case .targetAppNotFound:
-            return "找不到 SimpleLoader.app\n请确保它已安装在应用程序文件夹或与此安装程序同一目录"
+            return "target_app_not_found".localized
         case .sourceResourcesNotFound:
-            return "找不到源资源文件夹"
+            return "source_resources_not_found".localized
         case .sourceFilesNotFound:
-            return "源资源文件夹中缺少 PresetFiles 或 Presets 文件夹"
+            return "source_files_not_found".localized
         case .copyFailed:
-            return "复制文件时出错"
+            return "copy_failed".localized
         }
     }
 }
