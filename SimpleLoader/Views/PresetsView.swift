@@ -83,14 +83,14 @@ struct PresetsView: View {
         
         // 检查是否需要KDK
         if preset.requiresKDK && !kdkMerger.isKDKSelected {
-            kdkMerger.logPublisher.send("error_preset_requires_kdk".localized)
+            kdkMerger.logMessage("error_preset_requires_kdk")
             return
         }
         
         for file in preset.files {
             guard let versionDir = PatchPresetManager.shared.getPresetFilesDirectory(for: file.systemVersion),
                   FileManager.default.fileExists(atPath: versionDir.path) else {
-                kdkMerger.logPublisher.send("warning_version_not_found".localized + ": \(file.systemVersion)")
+                kdkMerger.logMessage("warning_version_not_found", parameters: [": \(file.systemVersion)"])
                 continue
             }
             
@@ -104,7 +104,7 @@ struct PresetsView: View {
                     filePaths.append(sourcePath)
                 }
             } else {
-                kdkMerger.logPublisher.send("warning_file_not_found".localized + ": \(file.source) (版本: \(file.systemVersion))")
+                kdkMerger.logMessage("warning_file_not_found", parameters: [": \(file.source) (版本: \(file.systemVersion))"])
             }
         }
         

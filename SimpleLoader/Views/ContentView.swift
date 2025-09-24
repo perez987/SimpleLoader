@@ -35,6 +35,7 @@ struct ContentView: View {
                     
                     LogView(logMessages: $kdkMerger.logMessages)
                         .frame(height: 150)
+                        .environmentObject(languageManager)
                     
                     InstallationOptionsView(
                         showAdvancedOptions: $showAdvancedOptions,
