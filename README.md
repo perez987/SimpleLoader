@@ -1,8 +1,8 @@
 # SimpleLoader - macOS System Extension Installer
 
 ![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
-![Platform](https://img.shields.io/badge/macOS-11+-blue.svg)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/perez987/SimpleLoader)
+![Platform](https://img.shields.io/badge/macOS-13+-blue.svg)
+![License](https://img.shields.io/badge/License-GPLv3-green.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/SimpleLoader/total?label=Downloads&color=00cd00)
 
 <b> [中文版 (Chinese version)](README-ZH.md) </b>
