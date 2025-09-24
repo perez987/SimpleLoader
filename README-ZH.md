@@ -45,7 +45,7 @@
 ## 安装方法
 
 ### 手动安装
-1. 下载最新版本 [Release](https://github.com/laobamac/SimpleLoader/releases)
+1. 下载最新版本 [Release](https://github.com/perez987/SimpleLoader/releases)
 2. 解压后拖拽到 Applications 文件夹
 
 ## 使用指南
