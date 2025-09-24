@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BB17B9932E367B7A00F80156 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BB17B9922E367B7300F80156 /* README.md */; };
-		BBE0F9502E38E83D00285A05 /* README-EN.md in Resources */ = {isa = PBXBuildFile; fileRef = BBE0F94F2E38E83D00285A05 /* README-EN.md */; };
 		D913A1982E3BE03D00826559 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D913A1752E3BE03D00826559 /* LanguageManager.swift */; };
 		D913A1992E3BE03D00826559 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D913A1762E3BE03D00826559 /* LanguageSelectionView.swift */; };
 		D913A19A2E3BE03D00826559 /* LocalizationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D913A17E2E3BE03D00826559 /* LocalizationHelper.swift */; };
@@ -35,7 +34,6 @@
 /* Begin PBXFileReference section */
 		BB136A4F2E35B928008F000D /* SimpleLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB17B9922E367B7300F80156 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		BBE0F94F2E38E83D00285A05 /* README-EN.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "README-EN.md"; sourceTree = "<group>"; };
 		D913A1752E3BE03D00826559 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		D913A1762E3BE03D00826559 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
 		D913A1772E3BE03D00826559 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -81,10 +79,7 @@
 		BB136A462E35B928008F000D = {
 			isa = PBXGroup;
 			children = (
-				D913A1732E3BE03400826559 /* PresetFiles */,
-				D913A1742E3BE03900826559 /* Presets */,
 				BB17B9922E367B7300F80156 /* README.md */,
-				BBE0F94F2E38E83D00285A05 /* README-EN.md */,
 				D913A1972E3BE03D00826559 /* SimpleLoader */,
 				BB136A502E35B928008F000D /* Products */,
 			);
@@ -96,22 +91,6 @@
 				BB136A4F2E35B928008F000D /* SimpleLoader.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		D913A1732E3BE03400826559 /* PresetFiles */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = PresetFiles;
-			path = SimpleLoader/PresetFiles;
-			sourceTree = "<group>";
-		};
-		D913A1742E3BE03900826559 /* Presets */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Presets;
-			path = SimpleLoader/Presets;
 			sourceTree = "<group>";
 		};
 		D913A17F2E3BE03D00826559 /* Languages */ = {
@@ -133,20 +112,6 @@
 				D913A1822E3BE03D00826559 /* UserDefaultsManager.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		D913A1842E3BE03D00826559 /* PresetFiles */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PresetFiles;
-			sourceTree = "<group>";
-		};
-		D913A1852E3BE03D00826559 /* Presets */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presets;
 			sourceTree = "<group>";
 		};
 		D913A1872E3BE03D00826559 /* Styles */ = {
@@ -180,8 +145,6 @@
 			children = (
 				D913A17F2E3BE03D00826559 /* Languages */,
 				D913A1832E3BE03D00826559 /* Models */,
-				D913A1842E3BE03D00826559 /* PresetFiles */,
-				D913A1852E3BE03D00826559 /* Presets */,
 				D913A1872E3BE03D00826559 /* Styles */,
 				D913A1932E3BE03D00826559 /* Views */,
 				D913A1942E3BE03D00826559 /* Assets.xcassets */,
@@ -261,7 +224,6 @@
 				BB17B9932E367B7A00F80156 /* README.md in Resources */,
 				D913A1AB2E3BE03D00826559 /* Localizable.strings in Resources */,
 				D913A1AC2E3BE03D00826559 /* Assets.xcassets in Resources */,
-				BBE0F9502E38E83D00285A05 /* README-EN.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,10 +403,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SimpleLoader/SimpleLoader.entitlements;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.0.0;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -472,10 +435,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SimpleLoader/SimpleLoader.entitlements;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.0.0;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
