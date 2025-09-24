@@ -29,7 +29,7 @@ struct KDKSelectionView: View {
                     if let newValue = newValue {
                         kdkMerger.kdkPath = newValue
                         kdkMerger.isKDKSelected = true
-                        kdkMerger.logPublisher.send("selected_kdk".localized + ": \(newValue)")
+                        kdkMerger.logMessage("selected_kdk", parameters: [": \(newValue)"])
                     } else {
                         kdkMerger.kdkPath = ""
                         kdkMerger.isKDKSelected = false
