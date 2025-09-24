@@ -39,7 +39,7 @@ A graphical tool designed for macOS to safely merge KDK (Kernel Development Kit)
 
 - **Language**: Swift 5.5
 - **UI Framework**: SwiftUI
-- **Minimum System Requirements**: macOS 11 Big Sur
+- **Minimum System Requirements**: macOS 13 Ventura
 - **Dependency Management**: Swift Package Manager
 
 ## Installation method
@@ -88,5 +88,3 @@ Please make sure the code complies with the project specifications and passes th
 ## Open Source Agreement
 
 This project adopts the **GNU General Public License v3.0** open source agreement.
-
-For the full agreement, see the [LICENSE](LICENSE) file.

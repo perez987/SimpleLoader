@@ -40,7 +40,7 @@
 
 - **语言**: Swift 5.5
 - **UI框架**: SwiftUI
-- **最低系统要求**: macOS 11 Big Sur
+- **最低系统要求**: macOS 13 Ventura
 - **依赖管理**: Swift Package Manager
 
 ## 安装方法
@@ -88,4 +88,3 @@
 ## 开源协议
 
 本项目采用 **GNU General Public License v3.0** 开源协议。
-完整协议内容见 [LICENSE](LICENSE) 文件。

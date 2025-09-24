@@ -20,7 +20,6 @@ struct ActionButtonsView: View {
     var createSnapshotAction: () -> Void
     var restoreSnapshotAction: () -> Void
     var aboutAction: () -> Void
-    var presetsAction: () -> Void
     
     var body: some View {
         VStack(spacing: 12) {
@@ -42,12 +41,6 @@ struct ActionButtonsView: View {
                     .buttonStyle(NeutralButtonStyle())
                     .transition(.scale)
                 } else {
-                    Button(action: presetsAction) {
-                        Label("presets".localized, systemImage: "square.stack.3d.down.right")
-                            .frame(minWidth: 120)
-                    }
-                    .buttonStyle(SecondaryButtonStyle())
-                    
                     Button(action: mergeAction) {
                         Label("only_merge_kdk".localized, systemImage: "square.stack.3d.down.right")
                             .frame(minWidth: 120)
@@ -63,7 +56,8 @@ struct ActionButtonsView: View {
                     }
                     .keyboardShortcut(.defaultAction)
                     .disabled(!hasKextsSelected)
-                    .buttonStyle(AccentButtonStyle())
+//                    .buttonStyle(AccentButtonStyle())
+					.buttonStyle(SecondaryButtonStyle())
                     .transition(.move(edge: .trailing))
                 }
             }

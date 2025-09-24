@@ -19,7 +19,6 @@ struct ContentView: View {
     @State private var fullKDKMerge = false
     @State private var alertMessage: AlertMessage? = nil
     @State private var showAbout = false
-    @State private var showPresetsView = false
     @State private var refreshID = UUID()
     
     var body: some View {
@@ -85,14 +84,13 @@ struct ContentView: View {
                             kdkMerger.currentOperation = "restore_snapshot".localized
                             kdkMerger.restoreLastSnapshot()
                         },
-                        aboutAction: { showAbout = true },
-                        presetsAction: { showPresetsView = true }
+                        aboutAction: { showAbout = true }//,
                     )
                 }
                 .padding()
             }
             .background(Color(.windowBackgroundColor))
-            
+
             FooterView()
         }
         .id(refreshID)
@@ -101,16 +99,7 @@ struct ContentView: View {
             AboutView()
                 .environmentObject(languageManager)
         }
-        .sheet(isPresented: $showPresetsView) {
-            PresetsView(
-                kdkMerger: kdkMerger,
-                forceOverwrite: $forceOverwrite,
-                backupExisting: $backupExisting,
-                installToLE: $installToLE,
-                installToPrivateFrameworks: $installToPrivateFrameworks
-            )
-            .environmentObject(languageManager)
-        }
+
         .alert(item: $alertMessage) { message in
             Alert(
                 title: Text(message.title),
