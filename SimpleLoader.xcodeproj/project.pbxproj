@@ -27,6 +27,7 @@
 		D913A1AA2E3BE03D00826559 /* SimpleLoaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D913A1962E3BE03D00826559 /* SimpleLoaderApp.swift */; };
 		D913A1AB2E3BE03D00826559 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D913A17D2E3BE03D00826559 /* Localizable.strings */; };
 		D913A1AC2E3BE03D00826559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D913A1942E3BE03D00826559 /* Assets.xcassets */; };
+		D99674782E853FE200DA3825 /* Appicon.icon in Resources */ = {isa = PBXBuildFile; fileRef = D99674772E853FE200DA3825 /* Appicon.icon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		D913A1952E3BE03D00826559 /* SimpleLoader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleLoader.entitlements; sourceTree = "<group>"; };
 		D913A1962E3BE03D00826559 /* SimpleLoaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLoaderApp.swift; sourceTree = "<group>"; };
 		D94E9A162E3EB76100CBBFEB /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D99674772E853FE200DA3825 /* Appicon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = Appicon.icon; sourceTree = "<group>"; };
 		D9F67D472E44AD0D005C275F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +139,7 @@
 		D913A1972E3BE03D00826559 /* SimpleLoader */ = {
 			isa = PBXGroup;
 			children = (
+				D99674772E853FE200DA3825 /* Appicon.icon */,
 				D913A17F2E3BE03D00826559 /* Languages */,
 				D913A1832E3BE03D00826559 /* Models */,
 				D913A1872E3BE03D00826559 /* Styles */,
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB17B9932E367B7A00F80156 /* README.md in Resources */,
+				D99674782E853FE200DA3825 /* Appicon.icon in Resources */,
 				D913A1AB2E3BE03D00826559 /* Localizable.strings in Resources */,
 				D913A1AC2E3BE03D00826559 /* Assets.xcassets in Resources */,
 			);
