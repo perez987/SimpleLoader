@@ -20,8 +20,8 @@ struct SimpleLoaderApp: App {
                     minWidth: 880,
 					idealWidth: 880,
 					maxWidth: 880,
-                    minHeight: 970,
-					idealHeight: 970,
+                    minHeight: 560,
+					idealHeight: 560,
 					maxHeight: 970
                 )
 				.fixedSize()
