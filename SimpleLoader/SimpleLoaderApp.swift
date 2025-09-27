@@ -18,13 +18,13 @@ struct SimpleLoaderApp: App {
                 .environmentObject(languageManager)
                 .frame(
                     minWidth: 880,
-					idealWidth: 880,
-					maxWidth: 880,
+                    idealWidth: 880,
+                    maxWidth: 880,
                     minHeight: 560,
-					idealHeight: 560,
-					maxHeight: 970
+                    idealHeight: 560,
+                    maxHeight: 970
                 )
-				.fixedSize()
+                .fixedSize()
                 .onAppear {
                     if languageManager.currentLanguage == "auto" {
                         languageManager.currentLanguage = Locale.preferredLanguages.first?.components(separatedBy: "-").first ?? "en"
@@ -32,7 +32,7 @@ struct SimpleLoaderApp: App {
                 }
         }
         .windowStyle(HiddenTitleBarWindowStyle())
-		.windowResizability(.contentSize)
+        .windowResizability(.contentSize)
     }
 }
 
@@ -43,3 +43,4 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
 }
+
