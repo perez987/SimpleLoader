@@ -33,14 +33,13 @@ class LanguageManager: ObservableObject {
     }
     
     func availableLanguages() -> [String] {
-        return ["en", "zh-Hans", "zh-Hant", "es", "it", "ko", "pt-BR"] // List of supported languages
+        return ["en", "zh-Hans", "es", "it", "ko", "pt-BR"] // List of supported languages
     }
     
     func displayName(for language: String) -> String {
         switch language {
         case "en": return "English"
         case "zh-Hans": return "简体中文"
-        case "zh-Hant": return "繁体中文"
         case "es": return "Español"
         case "it": return "Italian"
         case "ko": return "Korean"

@@ -78,7 +78,7 @@ struct AboutView: View {
             
             Divider()
             
-            Link(destination: URL(string: "https://github.com/laobamac/SimpleLoader")!) {
+            Link(destination: URL(string: "https://github.com/perez987/SimpleLoader")!) {
                 HStack {
                     Image(systemName: "arrow.up.right.square")
                     Text("visit_github".localized)
