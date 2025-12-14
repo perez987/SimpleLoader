@@ -14,7 +14,7 @@ struct InstallationOptionsView: View {
     @Binding var installToLE: Bool
     @Binding var installToPrivateFrameworks: Bool
     @Binding var fullKDKMerge: Bool
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
@@ -32,7 +32,7 @@ struct InstallationOptionsView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
             }
-            
+
             Toggle("force_overwrite".localized, isOn: $forceOverwrite)
                 .toggleStyle(SwitchToggleStyle(tint: .accentColor))
                 .onChange(of: forceOverwrite) { newValue in
@@ -41,29 +41,29 @@ struct InstallationOptionsView: View {
                     }
                     UserDefaultsManager.saveForceOverwrite(newValue)
                 }
-            
+
             Toggle("backup_existing".localized, isOn: $backupExisting)
                 .toggleStyle(SwitchToggleStyle(tint: .accentColor))
                 .disabled(!forceOverwrite)
                 .onChange(of: backupExisting) { newValue in
                     UserDefaultsManager.saveBackupExisting(newValue)
                 }
-            
+
             if showAdvancedOptions {
                 Divider()
                     .transition(.opacity)
-                
+
                 VStack(alignment: .leading, spacing: 8) {
                     Text("advanced_options".localized)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
-                    
+
                     Toggle("install_to_le".localized, isOn: $installToLE)
                         .toggleStyle(SwitchToggleStyle(tint: .accentColor))
                         .onChange(of: installToLE) { newValue in
                             UserDefaultsManager.saveInstallToLE(newValue)
                         }
-                    
+
                     Toggle("install_to_private".localized, isOn: $installToPrivateFrameworks)
                         .toggleStyle(SwitchToggleStyle(tint: .accentColor))
                         .onChange(of: installToPrivateFrameworks) { newValue in
@@ -72,7 +72,7 @@ struct InstallationOptionsView: View {
                     Text("private_warning".localized)
                         .font(.caption2)
                         .foregroundColor(.red)
-                    
+
                     Toggle("full_kdk_merge".localized, isOn: $fullKDKMerge)
                         .toggleStyle(SwitchToggleStyle(tint: .accentColor))
                         .onChange(of: fullKDKMerge) { newValue in

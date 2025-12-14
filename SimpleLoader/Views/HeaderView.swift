@@ -10,22 +10,24 @@ import SwiftUI
 struct HeaderView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            HStack {
+            HStack(alignment: .center) {
                 Image(systemName: "hammer.fill")
                     .font(.system(size: 24))
                     .foregroundColor(.accentColor)
                 Text("app_title".localized)
                     .font(.system(size: 24, weight: .bold))
                 Spacer()
+                //					.fixedSize()
             }
-            
             Text("app_subtitle".localized)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
         }
+
         .padding()
         .background(VisualEffectView(material: .headerView, blendingMode: .withinWindow))
         .overlay(Divider(), alignment: .bottom)
         .shadow(color: .black.opacity(0.1), radius: 5, y: 2)
+        //		.fixedSize()
     }
 }

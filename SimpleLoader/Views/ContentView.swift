@@ -5,8 +5,8 @@
 //  Created by laobamac on 2025/7/27.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var languageManager: LanguageManager
@@ -19,23 +19,23 @@ struct ContentView: View {
     @State private var fullKDKMerge = false
     @State private var alertMessage: AlertMessage? = nil
     @State private var showAbout = false
-    @State private var showPresetsView = false
     @State private var refreshID = UUID()
-    
+
     var body: some View {
         VStack(spacing: 0) {
             HeaderView()
                 .zIndex(1)
-            
+
             ScrollView {
                 VStack(spacing: 20) {
                     KDKSelectionView(kdkMerger: kdkMerger)
-                    
+
                     KextSelectionView(kextPaths: $kdkMerger.kextPaths)
-                    
+
                     LogView(logMessages: $kdkMerger.logMessages)
                         .frame(height: 150)
-                    
+                        .environmentObject(languageManager)
+
                     InstallationOptionsView(
                         showAdvancedOptions: $showAdvancedOptions,
                         forceOverwrite: $forceOverwrite,
@@ -44,14 +44,14 @@ struct ContentView: View {
                         installToPrivateFrameworks: $installToPrivateFrameworks,
                         fullKDKMerge: $fullKDKMerge
                     )
-                    
+
                     StatusView(
                         isInstalling: $kdkMerger.isInstalling,
                         isMerging: $kdkMerger.isMerging,
                         progress: $kdkMerger.installationProgress,
                         currentOperation: $kdkMerger.currentOperation
                     )
-                    
+
                     ActionButtonsView(
                         isKDKSelected: $kdkMerger.isKDKSelected,
                         isInstalling: $kdkMerger.isInstalling,
@@ -84,14 +84,13 @@ struct ContentView: View {
                             kdkMerger.currentOperation = "restore_snapshot".localized
                             kdkMerger.restoreLastSnapshot()
                         },
-                        aboutAction: { showAbout = true },
-                        presetsAction: { showPresetsView = true }
+                        aboutAction: { showAbout = true } // ,
                     )
                 }
                 .padding()
             }
             .background(Color(.windowBackgroundColor))
-            
+
             FooterView()
         }
         .id(refreshID)
@@ -100,21 +99,13 @@ struct ContentView: View {
             AboutView()
                 .environmentObject(languageManager)
         }
-        .sheet(isPresented: $showPresetsView) {
-            PresetsView(
-                kdkMerger: kdkMerger,
-                forceOverwrite: $forceOverwrite,
-                backupExisting: $backupExisting,
-                installToLE: $installToLE,
-                installToPrivateFrameworks: $installToPrivateFrameworks
-            )
-            .environmentObject(languageManager)
-        }
+
         .alert(item: $alertMessage) { message in
             Alert(
                 title: Text(message.title),
                 message: Text(message.message),
-                dismissButton: .default(Text("OK".localized)))
+                dismissButton: .default(Text("OK".localized))
+            )
         }
         .onReceive(kdkMerger.alertPublisher) { message in
             alertMessage = message

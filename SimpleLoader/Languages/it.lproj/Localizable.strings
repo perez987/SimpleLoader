@@ -1,12 +1,7 @@
 //
-//  Localizable.strings
-//  SimpleLoader
-//
-//  Created by laobamac on 2025/7/28.
-//
 
 /*
-  Localizable.strings (Italian)
+  Localizable.strings (Italian) by Anto65
   SimpleLoader
 */
 
@@ -50,8 +45,10 @@
 "close" = "Chiudere";
 "rights_reserved" = "Tutti i diritti riservati";
 "contributor1" = "laobamac - Sviluppatore";
-"contributor2" = "perez987 - Traduzione parziale in inglese";
-"contributor3" = "Anto65 - con traduzione parziale in italiano disponibile";
+"contributor2" = "perez987 - Traduzione parziale in inglese i spagnolo";
+"contributor3" = "Anto65 - Traduzione parziale in italiano";
+"contributor4" = "lshbluesky - Traduzione parziale in coreano";
+"contributor5" = "jonasw8 - Traduzione parziale in brasiliano";
 "auto_detect" = "Rilevamento automatico";
 "language_settings" = "Configurazione della lingua";
 "language" = "Lingua";
@@ -85,7 +82,6 @@
 "force" = "Forzare la sovrascrittura";
 "backup" = "Copia di backup";
 "rebuild" = "Ricostruisci la cache";
-"about" = "A proposito di";
 "install_completed" = "Installazione completata";
 "op_successfully" = "Operazione riuscita";
 "op_failed" = "Operazione fallita";
@@ -106,7 +102,6 @@
 "revert_successfully" = "Istantanea ripristinata con successo";
 "revert_failed" = "Ripristino Instantanea fallito";
 "selected_kdk" = "KDK selezionato";
-"cancel" = "Annullare";
 "only_merge_kdk" = "Combina solo KDK";
 "creat_snapshot" = "Crea Istantanea";
 "restore_snapshot" = "Ripristina Istantanea";
@@ -119,3 +114,21 @@
 "drag_here" = "Trascina e rilascia i file Kext/Framework qui";
 "or" = "O";
 "click_to_choose" = "Clicca qui per selezionare i file ...";
+"operation_success_title" = "Operazione riuscita";
+"operation_success_restart_message" = "Operazione completata correttamente. Si consiglia di riavviare immediatamente il computer affinché le modifiche abbiano effetto.";
+"restart_now" = "Riavvia ora";
+"restart_later" = "Riavvia più tardi";
+"operation_canceled_title" = "Operazione annullata";
+"operation_canceled_message" = "L'operazione corrente è stata interrotta. Per garantire l'integrità del sistema, si consiglia di ripristinare lo snapshot e ricostruire la cache.";
+"presets" = "Predefiniti";
+"select_preset_instruction" = "Seleziona un predefinito per configurare automaticamente le opzioni di installazione";
+"requires_kdk" = "Richiede KDK";
+"rebuilds_cache" = "Ricostruisci cache";
+"error_preset_files_dir_not_found" = "Errore: directory dei file predefiniti non trovata";
+"error_preset_requires_kdk" = "Errore: questo preset richiede la selezione di un KDK";
+"warning_file_not_found" = "Avviso: file non trovato";
+"error_no_system_version_selected" = "Errore: nessuna versione di sistema selezionata";
+"warning_version_not_found" = "Avvertenza: nessuna versione di sistema trovata";
+"confirm_install_preset" = "Conferma installazione preset";
+"install" = "Installa";
+

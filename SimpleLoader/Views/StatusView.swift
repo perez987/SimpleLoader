@@ -12,12 +12,12 @@ struct StatusView: View {
     @Binding var isMerging: Bool
     @Binding var progress: Double
     @Binding var currentOperation: String?
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("status".localized)
                 .font(.headline)
-            
+
             if isInstalling || isMerging {
                 ProgressView(value: progress, total: 1) {
                     if let operation = currentOperation {
@@ -30,7 +30,7 @@ struct StatusView: View {
                         .foregroundColor(.secondary)
                 }
                 .progressViewStyle(LinearProgressViewStyle(tint: .accentColor))
-                
+
                 HStack {
                     Image(systemName: "info.circle")
                     if let operation = currentOperation {

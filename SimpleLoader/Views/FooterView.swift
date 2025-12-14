@@ -16,7 +16,7 @@ struct FooterView: View {
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Spacer()
-                Text("version".localized + " 1.0.1")
+                Text("version".localized + " 1.1.0")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Link("GitHub", destination: URL(string: "https://github.com/laobamac/SimpleLoader")!)

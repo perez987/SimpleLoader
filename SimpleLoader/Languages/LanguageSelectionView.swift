@@ -10,7 +10,7 @@ import SwiftUI
 struct LanguageSelectionView: View {
     @EnvironmentObject var languageManager: LanguageManager
     @Environment(\.presentationMode) var presentationMode
-    
+
     var body: some View {
         VStack {
             List {
@@ -31,7 +31,7 @@ struct LanguageSelectionView: View {
                     .buttonStyle(PlainButtonStyle())
                 }
             }
-            
+
             Button(action: {
                 languageManager.setLanguage("auto")
                 presentationMode.wrappedValue.dismiss()

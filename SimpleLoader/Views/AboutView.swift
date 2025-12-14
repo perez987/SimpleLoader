@@ -11,13 +11,15 @@ struct AboutView: View {
     @EnvironmentObject var languageManager: LanguageManager
     @Environment(\.presentationMode) var presentationMode
     @State private var showLanguageSelection = false
-    
+
     let contributors = [
         "contributor1".localized,
         "contributor2".localized,
         "contributor3".localized,
+        "contributor4".localized,
+        "contributor5".localized,
     ]
-    
+
     var body: some View {
         VStack(spacing: 16) {
             HStack {
@@ -34,18 +36,19 @@ struct AboutView: View {
                 }
             }
             .padding(.top)
-            
+
             Divider()
-            
+
             VStack(alignment: .leading, spacing: 8) {
                 InfoRow(icon: "number", title: "version".localized, value: "1.0.0")
                 InfoRow(icon: "person", title: "author".localized, value: "laobamac")
-                InfoRow(icon: "c", title: "copyright".localized, value: "© 2025 " + "rights_reserved".localized)
+                // icon: "c" changed to icon:"c.circle" by lshbluesky
+                InfoRow(icon: "c.circle", title: "copyright".localized, value: "© 2025 " + "rights_reserved".localized)
                 InfoRow(icon: "globe", title: "language".localized,
                         value: languageManager.currentLanguage == "auto" ?
-                        "auto_detect".localized :
-                        languageManager.displayName(for: languageManager.currentLanguage))
-                
+                            "auto_detect".localized :
+                            languageManager.displayName(for: languageManager.currentLanguage))
+
                 Button(action: {
                     showLanguageSelection = true
                 }) {
@@ -59,9 +62,9 @@ struct AboutView: View {
                         .environmentObject(languageManager)
                 }
             }
-            
+
             Divider()
-            
+
             VStack(alignment: .leading, spacing: 8) {
                 Text("contributors".localized)
                     .font(.headline)
@@ -72,19 +75,19 @@ struct AboutView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal)
-            
+
             Divider()
-            
-            Link(destination: URL(string: "https://github.com/laobamac/SimpleLoader")!) {
+
+            Link(destination: URL(string: "https://github.com/perez987/SimpleLoader")!) {
                 HStack {
                     Image(systemName: "arrow.up.right.square")
                     Text("visit_github".localized)
                 }
                 .foregroundColor(.accentColor)
             }
-            
+
             Divider()
-            
+
             Button("close".localized) {
                 presentationMode.wrappedValue.dismiss()
             }
@@ -92,7 +95,7 @@ struct AboutView: View {
             .frame(width: 120)
         }
         .padding()
-        .frame(width: 325, height: 425)
+        .frame(width: 355, height: 480) // To accommodate a longer list of contributors
     }
 }
 
@@ -100,7 +103,7 @@ struct InfoRow: View {
     let icon: String
     let title: String
     let value: String
-    
+
     var body: some View {
         HStack {
             Image(systemName: icon)

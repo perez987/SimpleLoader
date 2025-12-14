@@ -10,12 +10,12 @@ import UniformTypeIdentifiers
 
 struct KDKSelectionView: View {
     @ObservedObject var kdkMerger: KDKMerger
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("select_kdk".localized)
                 .font(.headline)
-            
+
             HStack {
                 Picker("select_installed_kdk".localized, selection: $kdkMerger.selectedKDK) {
                     Text("not_selected".localized).tag(nil as String?)
@@ -29,19 +29,19 @@ struct KDKSelectionView: View {
                     if let newValue = newValue {
                         kdkMerger.kdkPath = newValue
                         kdkMerger.isKDKSelected = true
-                        kdkMerger.logPublisher.send("selected_kdk".localized + ": \(newValue)")
+                        kdkMerger.logMessage("selected_kdk", parameters: [": \(newValue)"])
                     } else {
                         kdkMerger.kdkPath = ""
                         kdkMerger.isKDKSelected = false
                     }
                 }
-                
+
                 Button("refresh".localized) {
                     kdkMerger.refreshKDKList()
                 }
                 .buttonStyle(BorderedButtonStyle())
             }
-            
+
             if kdkMerger.isKDKSelected {
                 HStack {
                     Image(systemName: "checkmark.circle.fill")
@@ -61,4 +61,3 @@ struct KDKSelectionView: View {
         .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 2)
     }
 }
-

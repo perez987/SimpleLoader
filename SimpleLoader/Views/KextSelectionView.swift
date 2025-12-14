@@ -11,12 +11,12 @@ import UniformTypeIdentifiers
 struct KextSelectionView: View {
     @Binding var kextPaths: [String]
     @State private var isTargeted = false
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("choose_bundle".localized)
                 .font(.headline)
-            
+
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(isTargeted ? Color.accentColor.opacity(0.2) : Color(.controlBackgroundColor))
@@ -30,7 +30,7 @@ struct KextSelectionView: View {
                         handleDrop(providers: providers)
                         return true
                     }
-                
+
                 if kextPaths.isEmpty {
                     VStack(spacing: 8) {
                         Image(systemName: "plus.square.dashed")
@@ -85,10 +85,10 @@ struct KextSelectionView: View {
         )
         .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 2)
     }
-    
+
     private func handleDrop(providers: [NSItemProvider]) {
         for provider in providers {
-            provider.loadItem(forTypeIdentifier: UTType.fileURL.identifier, options: nil) { (urlData, error) in
+            provider.loadItem(forTypeIdentifier: UTType.fileURL.identifier, options: nil) { urlData, _ in
                 if let urlData = urlData as? Data {
                     let url = NSURL(absoluteURLWithDataRepresentation: urlData, relativeTo: nil) as URL
                     DispatchQueue.main.async {
@@ -98,20 +98,20 @@ struct KextSelectionView: View {
             }
         }
     }
-    
+
     private func selectFiles() {
         let panel = NSOpenPanel()
         panel.allowsMultipleSelection = true
         panel.canChooseDirectories = false
         panel.allowedContentTypes = [.bundle, .framework]
-        
+
         if panel.runModal() == .OK {
             for url in panel.urls {
                 addFile(at: url.path)
             }
         }
     }
-    
+
     private func addFile(at path: String) {
         guard !kextPaths.contains(path) else { return }
         withAnimation {

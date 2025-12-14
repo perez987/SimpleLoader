@@ -6,37 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		BB17B9932E367B7A00F80156 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BB17B9922E367B7300F80156 /* README.md */; };
-		BBE0F9502E38E83D00285A05 /* README-EN.md in Resources */ = {isa = PBXBuildFile; fileRef = BBE0F94F2E38E83D00285A05 /* README-EN.md */; };
-		BBE0F9952E38E96D00285A05 /* Presets in Resources */ = {isa = PBXBuildFile; fileRef = BBE0F9942E38E96D00285A05 /* Presets */; };
-		BBE0F9972E38E97E00285A05 /* PresetFiles in Resources */ = {isa = PBXBuildFile; fileRef = BBE0F9962E38E97E00285A05 /* PresetFiles */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		BB136A4F2E35B928008F000D /* SimpleLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB17B9922E367B7300F80156 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		BBE0F94F2E38E83D00285A05 /* README-EN.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "README-EN.md"; sourceTree = "<group>"; };
-		BBE0F9942E38E96D00285A05 /* Presets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Presets; path = SimpleLoader/Presets; sourceTree = "<group>"; };
-		BBE0F9962E38E97E00285A05 /* PresetFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PresetFiles; path = SimpleLoader/PresetFiles; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		BBE0F9912E38E91B00285A05 /* Exceptions for "SimpleLoader" folder in "SimpleLoader" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Presets/HDAPatch.json,
-			);
-			target = BB136A4E2E35B928008F000D /* SimpleLoader */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BB136A512E35B928008F000D /* SimpleLoader */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				BBE0F9912E38E91B00285A05 /* Exceptions for "SimpleLoader" folder in "SimpleLoader" target */,
-			);
 			path = SimpleLoader;
 			sourceTree = "<group>";
 		};
@@ -56,10 +32,6 @@
 		BB136A462E35B928008F000D = {
 			isa = PBXGroup;
 			children = (
-				BBE0F9962E38E97E00285A05 /* PresetFiles */,
-				BBE0F9942E38E96D00285A05 /* Presets */,
-				BB17B9922E367B7300F80156 /* README.md */,
-				BBE0F94F2E38E83D00285A05 /* README-EN.md */,
 				BB136A512E35B928008F000D /* SimpleLoader */,
 				BB136A502E35B928008F000D /* Products */,
 			);
@@ -106,7 +78,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1640;
-				LastUpgradeCheck = 1640;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					BB136A4E2E35B928008F000D = {
 						CreatedOnToolsVersion = 16.4;
@@ -123,6 +95,8 @@
 				"zh-Hant",
 				es,
 				it,
+				"pt-BR",
+				ko,
 			);
 			mainGroup = BB136A462E35B928008F000D;
 			minimizedProjectReferenceProxies = 1;
@@ -141,10 +115,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBE0F9972E38E97E00285A05 /* PresetFiles in Resources */,
-				BBE0F9952E38E96D00285A05 /* Presets in Resources */,
-				BB17B9932E367B7A00F80156 /* README.md in Resources */,
-				BBE0F9502E38E83D00285A05 /* README-EN.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +136,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -195,6 +166,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 74U2CH74U6;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -220,6 +192,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -230,6 +203,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -259,6 +233,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 74U2CH74U6;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -277,6 +252,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
@@ -287,11 +263,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SimpleLoader/SimpleLoader.entitlements;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.0.0;
-				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = NO;
+				CURRENT_PROJECT_VERSION = 12;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = ER43ZD2S4U;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = SimpleLoader;
@@ -301,8 +280,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = cn.laobamac.SimpleLoader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -318,11 +297,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SimpleLoader/SimpleLoader.entitlements;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.0.0;
-				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = NO;
+				CURRENT_PROJECT_VERSION = 12;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = ER43ZD2S4U;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = SimpleLoader;
@@ -332,8 +314,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = cn.laobamac.SimpleLoader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

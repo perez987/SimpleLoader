@@ -1,12 +1,5 @@
-//
-//  Localizable.strings
-//  SimpleLoader
-//
-//  Created by laobamac on 2025/7/28.
-//
-
 /*
-  Localizable.strings (English)
+  Localizable.strings (English) by laobamac
   SimpleLoader
 */
 
@@ -38,7 +31,6 @@
 "merge_kdk" = "Merge KDK Only";
 "start_install" = "Start Installation";
 "cancel" = "Cancel";
-"about" = "About";
 "rebuild_cache" = "Rebuild Cache";
 "create_snapshot" = "Create Snapshot";
 "restore_snapshot" = "Restore Snapshot";
@@ -50,8 +42,10 @@
 "close" = "Close";
 "rights_reserved" = "All Rights Reserved";
 "contributor1" = "laobamac - Developer";
-"contributor2" = "perez987 - Partial English translation";
+"contributor2" = "perez987 - Partial Spanish and English translations";
 "contributor3" = "Anto65 - Partial Italian translations";
+"contributor4" = "lshbluesky - Partial Korean translation";
+"contributor5" = "jonasw8 - Partial Brazilian translation";
 "auto_detect" = "Auto Detect";
 "language_settings" = "Language Settings";
 "language" = "Language";
@@ -106,10 +100,7 @@
 "revert_successfully" = "Snapshot restored successfully";
 "revert_failed" = "Snapshot restore failed";
 "selected_kdk" = "KDK selected";
-"cancel" = "Cancel";
 "only_merge_kdk" = "Merge KDK Only";
-"creat_snapshot" = "Create Snapshot";
-"restore_snapshot" = "Restore Snapshot";
 "select_kdk" = "Select KDK";
 "select_installed_kdk" = "Select installed KDK";
 "not_selected" = "Not selected";
@@ -118,7 +109,24 @@
 "choose_bundle" = "Select Kext/Framework file";
 "drag_here" = "Drag and drop Kext/Framework files here";
 "or" = "Or";
-"click_to_choose" = "Click to select files...";
 "rebuilding_cache" = "Rebuilding kernel cache.";
 "creating_snapshot" = "Creating system snapshot.";
-"restore_snapshot" = "Restoring snapshot.";
+"click_to_choose" = "Click to choose file...";
+"operation_success_title" = "Operation Successful";
+"operation_success_restart_message" = "The operation completed successfully. We recommend restarting your computer immediately for the changes to take effect.";
+"restart_now" = "Restart Now";
+"restart_later" = "Restart Later";
+"operation_canceled_title" = "Operation Cancelled";
+"operation_canceled_message" = "The current operation was aborted. To ensure system integrity, we recommend restoring the snapshot and rebuilding the cache.";
+"presets" = "Presets";
+"select_preset_instruction" = "Select a preset to automatically configure installation options";
+"requires_kdk" = "Requires KDK";
+"rebuilds_cache" = "Rebuild Cache";
+"error_preset_files_dir_not_found" = "Error: Preset files directory not found";
+"error_preset_requires_kdk" = "Error: This preset requires a KDK to be selected";
+"warning_file_not_found" = "Warning: File not found";
+"error_no_system_version_selected" = "Error: No system version selected";
+"warning_version_not_found" = "Warning: No system version found";
+"confirm_install_preset" = "Confirm Install Preset";
+"install" = "Install";
+

@@ -20,8 +20,7 @@ struct ActionButtonsView: View {
     var createSnapshotAction: () -> Void
     var restoreSnapshotAction: () -> Void
     var aboutAction: () -> Void
-    var presetsAction: () -> Void
-    
+
     var body: some View {
         VStack(spacing: 12) {
             HStack(spacing: 12) {
@@ -30,9 +29,9 @@ struct ActionButtonsView: View {
                         .frame(minWidth: 120)
                 }
                 .buttonStyle(SecondaryButtonStyle())
-                
+
                 Spacer()
-                
+
                 if isInstalling || isMerging {
                     Button(action: cancelAction) {
                         Label("cancel".localized, systemImage: "xmark")
@@ -42,12 +41,6 @@ struct ActionButtonsView: View {
                     .buttonStyle(NeutralButtonStyle())
                     .transition(.scale)
                 } else {
-                    Button(action: presetsAction) {
-                        Label("presets".localized, systemImage: "square.stack.3d.down.right")
-                            .frame(minWidth: 120)
-                    }
-                    .buttonStyle(SecondaryButtonStyle())
-                    
                     Button(action: mergeAction) {
                         Label("only_merge_kdk".localized, systemImage: "square.stack.3d.down.right")
                             .frame(minWidth: 120)
@@ -56,41 +49,42 @@ struct ActionButtonsView: View {
                     .disabled(!isKDKSelected)
                     .buttonStyle(SecondaryButtonStyle())
                     .transition(.move(edge: .trailing))
-                    
+
                     Button(action: installAction) {
                         Label("start_install".localized, systemImage: "arrow.down.circle")
                             .frame(minWidth: 120)
                     }
                     .keyboardShortcut(.defaultAction)
                     .disabled(!hasKextsSelected)
-                    .buttonStyle(AccentButtonStyle())
+//                    .buttonStyle(AccentButtonStyle())
+                    .buttonStyle(SecondaryButtonStyle())
                     .transition(.move(edge: .trailing))
                 }
             }
-            
+
             Divider()
-            
+
             HStack(spacing: 12) {
                 Button(action: aboutAction) {
                     Label("about".localized, systemImage: "info.square.fill")
                         .frame(minWidth: 120)
                 }
                 .buttonStyle(SecondaryButtonStyle())
-                
+
                 Spacer()
-                
+
                 Button(action: rebuildCacheAction) {
                     Label("rebuild".localized, systemImage: "arrow.clockwise")
                         .frame(minWidth: 120)
                 }
                 .buttonStyle(SecondaryButtonStyle())
-                
+
                 Button(action: createSnapshotAction) {
                     Label("creat_snapshot".localized, systemImage: "camera")
                         .frame(minWidth: 120)
                 }
                 .buttonStyle(SecondaryButtonStyle())
-                
+
                 Button(action: restoreSnapshotAction) {
                     Label("restore_snapshot".localized, systemImage: "arrow.uturn.backward")
                         .frame(minWidth: 120)
