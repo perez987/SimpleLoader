@@ -16,10 +16,10 @@ struct FooterView: View {
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Spacer()
-                Text("version".localized + " 1.1.0")
+                Text("version".localized + " 1.1.1")
                     .font(.caption)
                     .foregroundColor(.secondary)
-                Link("GitHub", destination: URL(string: "https://github.com/laobamac/SimpleLoader")!)
+                Link("GitHub", destination: URL(string: "https://github.com/perez987/SimpleLoader")!)
                     .font(.caption)
             }
             .padding(.horizontal)
