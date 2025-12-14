@@ -82,7 +82,7 @@
 "backup" = "Copia de seguridad";
 "rebuild" = "Reconstruir caché";
 "install_completed" = "Instalación completada";
-"op_successfully" = "Operación exitosa";
+"op_successfully" = "Operación realizada";
 "op_failed" = "Operación fallida";
 "kext_has_been_installed" = "La extensión de kernel especificada ha sido instalada";
 "op_canceled" = "Operación cancelada";
