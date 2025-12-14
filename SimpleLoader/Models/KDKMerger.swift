@@ -126,10 +126,19 @@ class KDKMerger: ObservableObject {
                     self.log("found", parameters: ["\(kdks.count) 个KDK"])
                 }
             }
-        } catch {
-            logError("error_cant_read_kdk_dir", details: "- \(error.localizedDescription)")
-            DispatchQueue.main.async {
-                self.kdkItems = []
+        } catch let error as NSError {
+            // Check if the error is due to directory not existing
+            if error.domain == NSCocoaErrorDomain && error.code == NSFileReadNoSuchFileError {
+                log("warning_kdk_dir_doesnt_exist")
+                DispatchQueue.main.async {
+                    self.kdkItems = []
+                    self.showNoKDKFoundAlert()
+                }
+            } else {
+                logError("error_cant_read_kdk_dir", details: "- \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    self.kdkItems = []
+                }
             }
         }
     }
@@ -491,6 +500,10 @@ class KDKMerger: ObservableObject {
             refreshKDKList()
         } else {
             log("warning_kdk_dir_doesnt_exist")
+            DispatchQueue.main.async {
+                self.kdkItems = []
+                self.showNoKDKFoundAlert()
+            }
         }
     }
 
