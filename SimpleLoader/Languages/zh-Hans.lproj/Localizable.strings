@@ -56,6 +56,9 @@
 "merging" = "正在合并KDK...";
 "found" = "找到";
 "warning_no_kdk" = "警告: 未找到KDK，请先安装KDK";
+"warning_no_kdk_title" = "警告";
+"warning_no_kdk_message" = "未找到 KDK。你想去 Dortania 仓库下载吗？";
+"download_kdk" = "下载 KDK";
 "warning" = "警告";
 "error" = "错误";
 "none_out" = "无输出";

@@ -121,7 +121,7 @@ class KDKMerger: ObservableObject {
                 self.kdkItems = kdks
                 if kdks.isEmpty {
                     self.log("warning_no_kdk")
-                    self.showAlert(title: "warning".localized, message: "warning_no_kdk".localized)
+                    self.showNoKDKFoundAlert()
                 } else {
                     self.log("found", parameters: ["\(kdks.count) 个KDK"])
                 }
@@ -682,6 +682,24 @@ class KDKMerger: ObservableObject {
                 let script = "tell application \"System Events\" to restart"
                 if let appleScript = NSAppleScript(source: script) {
                     appleScript.executeAndReturnError(nil)
+                }
+            }
+        }
+    }
+    
+    private func showNoKDKFoundAlert() {
+        DispatchQueue.main.async {
+            let alert = NSAlert()
+            alert.messageText = "warning_no_kdk_title".localized
+            alert.informativeText = "warning_no_kdk_message".localized
+            alert.addButton(withTitle: "download_kdk".localized)
+            alert.addButton(withTitle: "cancel".localized)
+            
+            let response = alert.runModal()
+            if response == .alertFirstButtonReturn {
+                // Open the KDK repository in the default browser
+                if let url = URL(string: "https://github.com/dortania/KdkSupportPkg/releases") {
+                    NSWorkspace.shared.open(url)
                 }
             }
         }

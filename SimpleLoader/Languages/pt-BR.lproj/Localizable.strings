@@ -56,6 +56,9 @@
 "merging" = "Mesclando KDK...";
 "found" = "Encontrado";
 "warning_no_kdk" = "Atenção: KDK não encontrado，por favor instale o KDK primeiro";
+"warning_no_kdk_title" = "Aviso";
+"warning_no_kdk_message" = "KDK não encontrado. Deseja ir ao repositório Dortania e baixá-lo?";
+"download_kdk" = "Baixar KDK";
 "warning" = "Atenção";
 "error" = "Erro";
 "none_out" = "Sem Saída";

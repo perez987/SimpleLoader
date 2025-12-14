@@ -56,6 +56,9 @@
 "merging" = "KDK 병합 중...";
 "found" = "발견됨";
 "warning_no_kdk" = "경고: KDK를 찾을 수 없습니다. KDK를 먼저 설치해 주시기 바랍니다.";
+"warning_no_kdk_title" = "경고";
+"warning_no_kdk_message" = "KDK를 찾을 수 없습니다. 도르타니아 저장소로 가서 다운로드하시겠습니까?";
+"download_kdk" = "KDK 다운로드";
 "warning" = "경고";
 "error" = "오류";
 "none_out" = "출력 없음";
