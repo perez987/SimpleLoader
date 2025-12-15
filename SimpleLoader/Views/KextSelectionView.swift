@@ -55,7 +55,7 @@ struct KextSelectionView: View {
                                 HStack {
                                     Image(systemName: path.hasSuffix(".framework") ? "folder" : "doc")
                                     Text(URL(fileURLWithPath: path).lastPathComponent)
-                                        .font(.subheadline)
+                                        .font(.body)
                                     Spacer()
                                     Button(action: {
                                         withAnimation(.spring()) {
