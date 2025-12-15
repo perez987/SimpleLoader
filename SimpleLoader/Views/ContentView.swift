@@ -104,7 +104,10 @@ struct ContentView: View {
             Alert(
                 title: Text(message.title),
                 message: Text(message.message),
-                dismissButton: .default(Text("OK".localized))
+                dismissButton: .default(Text("OK".localized)) {
+                    // After success alert is dismissed, check if we need to show restart prompt
+                    kdkMerger.checkAndShowRestartPromptIfNeeded()
+                }
             )
         }
         .onReceive(kdkMerger.alertPublisher) { message in

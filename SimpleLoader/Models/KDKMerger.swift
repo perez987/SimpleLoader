@@ -54,6 +54,7 @@ class KDKMerger: ObservableObject {
     @Published var logPublisher = PassthroughSubject<LogMessage, Never>()
     @Published var currentOperation: String? = nil
     @Published var mergeOperations: [(source: String, destination: String)] = []
+    @Published var needsRestartPrompt = false
 
     private let fileManager = FileManager.default
     private let kdkDirectory = "/Library/Developer/KDKs"
@@ -126,10 +127,19 @@ class KDKMerger: ObservableObject {
                     self.log("found", parameters: ["\(kdks.count) 个KDK"])
                 }
             }
-        } catch {
-            logError("error_cant_read_kdk_dir", details: "- \(error.localizedDescription)")
-            DispatchQueue.main.async {
-                self.kdkItems = []
+        } catch let error as NSError {
+            // Check if the error is due to directory not existing
+            if error.domain == NSCocoaErrorDomain && error.code == NSFileReadNoSuchFileError {
+                log("warning_kdk_dir_doesnt_exist")
+                DispatchQueue.main.async {
+                    self.kdkItems = []
+                    self.showNoKDKFoundAlert()
+                }
+            } else {
+                logError("error_cant_read_kdk_dir", details: "- \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    self.kdkItems = []
+                }
             }
         }
     }
@@ -218,7 +228,7 @@ class KDKMerger: ObservableObject {
                             self.installationProgress = 0
                         }
                         self.showAlert(title: "merged_successfully".localized, message: "kdk_merged_successfully".localized)
-                        self.showRestartPrompt()
+                        self.needsRestartPrompt = true
                     } else {
                         self.logError("error_merged_kdk_failed", details: "- \(output ?? "none_out".localized)")
                         self.isMerging = false
@@ -352,7 +362,7 @@ class KDKMerger: ObservableObject {
                             self.installationProgress = 0
                         }
                         self.showAlert(title: "op_successfully".localized, message: "kext_has_been_installed".localized)
-                        self.showRestartPrompt()
+                        self.needsRestartPrompt = true
                     } else {
                         self.logError("error_installed_failed", details: "- \(output ?? "none_out".localized)")
                         self.isInstalling = false
@@ -491,6 +501,10 @@ class KDKMerger: ObservableObject {
             refreshKDKList()
         } else {
             log("warning_kdk_dir_doesnt_exist")
+            DispatchQueue.main.async {
+                self.kdkItems = []
+                self.showNoKDKFoundAlert()
+            }
         }
     }
 
@@ -653,7 +667,7 @@ class KDKMerger: ObservableObject {
                         self.installationProgress = 1.0
                         self.logPlainMessage(successMessage)
                         self.showAlert(title: "op_successfully".localized, message: successMessage)
-                        self.showRestartPrompt()
+                        self.needsRestartPrompt = true
                     } else {
                         self.logError("error", details: ": \(failureMessage) - \(output ?? "none_out".localized)")
                         self.showAlert(title: "op_failed".localized, message: output ?? failureMessage)
@@ -668,7 +682,7 @@ class KDKMerger: ObservableObject {
         }
     }
 
-    private func showRestartPrompt() {
+    func showRestartPrompt() {
         DispatchQueue.main.async {
             let alert = NSAlert()
             alert.messageText = "operation_success_title".localized
@@ -684,6 +698,13 @@ class KDKMerger: ObservableObject {
                     appleScript.executeAndReturnError(nil)
                 }
             }
+        }
+    }
+    
+    func checkAndShowRestartPromptIfNeeded() {
+        if needsRestartPrompt {
+            needsRestartPrompt = false
+            showRestartPrompt()
         }
     }
     
