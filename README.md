@@ -9,6 +9,8 @@
 
 A graphical tool designed for macOS to safely merge KDK (Kernel Development Kit) and install kernel extensions (Kext) to the system directory.
 
+**Note**: This app hasn't been updated recently. If it doesn't work well with the latest versions of macOS Tahoe, I recommend using [MyKextInstaller](https://github.com/Mirone/MyKextInstaller), which is continuously updated.
+
 ##### [中文版 - Chinese version](README-CN.md)
 
 ## Features
