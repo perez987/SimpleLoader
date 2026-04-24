@@ -9,6 +9,8 @@
 
 一款专为 macOS 设计的图形化工具，用于安全地合并 KDK（Kernel Development Kit）和安装内核扩展（Kext）到系统目录。
 
+**注意**：此应用近期未更新。如果它与最新版本的 macOS Tahoe 不兼容，我建议使用 [MyKextInstaller](https://github.com/Mirone/MyKextInstaller)，该应用会持续更新。
+
 ##### [English version - 英文版](README.md)
 
 ## 功能特性
